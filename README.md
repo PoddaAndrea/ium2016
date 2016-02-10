@@ -1,4 +1,4 @@
-#Proposta di progetto di IUM: Domotric # 
+#Proposta di progetto di IUM: Domotric 
 
 Progetto finale corso di Interazione Uomo Macchina
 
