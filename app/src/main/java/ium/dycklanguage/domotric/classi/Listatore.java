@@ -9,8 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- *
+import ium.dycklanguage.domotric.R;
 
 
 public class Listatore extends ArrayAdapter<Programmazione> {
@@ -20,30 +19,30 @@ public class Listatore extends ArrayAdapter<Programmazione> {
 
     public Listatore(Activity context, ArrayList<Programmazione> pr) {
 
-        super(context, R.layout.listatore, nome);	//associo la classe al layout
+        super(context, R.layout.programmata, pr);	//associo la classe al layout
 
         this.context = context;	//non ne ho idea, ma si
-        this.eventi = nome;
+        this.pr = pr;
     }
- */
-    /**visualizza il nome nella lista indicata
+
+    /**visualizza il nome nella lista indicata*/
     @Override
     public View getView(int position, View view, ViewGroup parent) {
 
         LayoutInflater inflater = context.getLayoutInflater();
 
-        View rowView = inflater.inflate(R.layout.listatore, null, true);	//infila il file xml nell' intent
+        View rowView = inflater.inflate(R.layout.programmata, null, true);	//infila il file xml nell' intent
 
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.nomeT);
-        TextView dataEora = (TextView) rowView.findViewById(R.id.dataT);
+        TextView txtTitle = (TextView) rowView.findViewById(R.id.nomeAzione);
+        TextView dataEora = (TextView) rowView.findViewById(R.id.nomeParametro);
 
-        txtTitle.setText(eventi.get(position).getNome());
+        txtTitle.setText(pr.get(position).getNomeStanza());
 
-        dataEora.setText(eventi.get(position).getData() + " " + eventi.get(position).getOra());
+        dataEora.setText(pr.get(position).getTipoProgrammazione());
 
         return rowView;
 
     }
 
 }
-        */
+

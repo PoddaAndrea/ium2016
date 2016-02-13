@@ -9,4 +9,68 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ium.dycklanguage.domotric.Programmazione">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/nomeAzione"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Attiva tutte le azioni programmate"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Switch
+                android:id="@+id/abilitaAzione"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/azioneProgrammateLista"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/addButtonP"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/addbutton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        />
+
 </RelativeLayout>
