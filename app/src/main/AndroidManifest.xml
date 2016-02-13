@@ -17,7 +17,9 @@
         </activity>
         <activity android:name=".Tapparelle" />
         <activity android:name=".Luci" />
-        <activity android:name=".Riscaldamento"></activity>
+        <activity android:name=".Riscaldamento" />
+        <activity android:name=".Programmazione" />
+        <activity android:name=".Gestione"></activity>
     </application>
 
 </manifest>
