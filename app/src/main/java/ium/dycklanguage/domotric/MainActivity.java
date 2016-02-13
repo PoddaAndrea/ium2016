@@ -29,12 +29,9 @@ public class MainActivity extends AppCompatActivity {
         immagini[4] = (ImageView) findViewById(R.id.immagine5);
         immagini[5] = (ImageView) findViewById(R.id.immagine6);
 
-        stanza.add(new Stanza("Cucina"));
-        stanza.add(new Stanza("Salone"));
-        stanza.add(new Stanza("Camera"));
-        stanza.get(3).setIlluminazione(false);
-        stanza.get(3).setRiscaldamento(true);
-        stanza.get(3).setTapparelle(false);
+        stanza.add(new Stanza("Cucina", true, false, false, 5, 0, 0, true));
+        stanza.add(new Stanza("Salone", false, false, false, 0, 0, 0, false));
+        stanza.add(new Stanza("Camera", false, true, false, 0, 0, 25, false));
 
         /**gestione luci*/
         immagini[0].setOnClickListener(new View.OnClickListener() {
@@ -52,9 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
             public void onClick(View arg0){
 
-                Intent activity = new Intent(getBaseContext(), Gestione.class);
-                //avvia la finestra corrispondente
-                startActivity(activity);
+                funzionalitaMancante();
             }
         });
 

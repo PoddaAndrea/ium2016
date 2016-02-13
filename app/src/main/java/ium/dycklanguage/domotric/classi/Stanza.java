@@ -13,9 +13,26 @@ public class Stanza {
     private int percentualeRiscaldamento;
     private boolean luceRegolabile;
 
+    /**metodo per creare una nuova stanza*/
     public Stanza(String nome){
 
         this.setNome(nome);
+    }
+
+    /**metodo per le stanze di defaulta*/
+    public Stanza(String nome, boolean illuminazione, boolean riscaldamento,
+                  boolean tapparelle, int percentualeIlluminazione, int percentualeRiscaldamento,
+                  int percentualetapparelle, boolean luceRegolabile){
+
+        this.setNome(nome);
+        this.setIlluminazione(illuminazione);
+        this.setRiscaldamento(riscaldamento);
+        this.setTapparelle(tapparelle);
+        this.setPercentualeIlluminazione(percentualeIlluminazione);
+        this.setPercentualeRiscaldamento(percentualeRiscaldamento);
+        this.setPercentualetapparelle(percentualetapparelle);
+        this.setLuceRegolabile(luceRegolabile);
+
     }
 
     public String getNome() {
