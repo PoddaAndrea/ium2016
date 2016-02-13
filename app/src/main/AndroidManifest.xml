@@ -19,7 +19,8 @@
         <activity android:name=".Luci" />
         <activity android:name=".Riscaldamento" />
         <activity android:name=".Programmazione" />
-        <activity android:name=".Gestione"></activity>
+        <activity android:name=".Gestione" />
+        <activity android:name=".NuovaProgrammazione"></activity>
     </application>
 
 </manifest>

@@ -32,19 +32,56 @@ public class MainActivity extends AppCompatActivity {
         stanza.add(new Stanza("Cucina"));
         stanza.add(new Stanza("Salone"));
         stanza.add(new Stanza("Camera"));
+        stanza.get(3).setIlluminazione(false);
+        stanza.get(3).setRiscaldamento(true);
+        stanza.get(3).setTapparelle(false);
 
+        /**gestione luci*/
+        immagini[0].setOnClickListener(new View.OnClickListener() {
 
-        immagini[0].setOnClickListener(new View.OnClickListener(){
+            public void onClick(View arg0) {
 
-            public void onClick(View arg0){
-
-                Intent activity = new Intent(getBaseContext(), Luci.class);
+                Intent activity = new Intent(getBaseContext(), Gestione.class);
                 //avvia la finestra corrispondente
                 startActivity(activity);
             }
         });
 
-        immagini[5].setOnClickListener(new View.OnClickListener(){
+        /**tapparelle*/
+        immagini[1].setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View arg0){
+
+                Intent activity = new Intent(getBaseContext(), Gestione.class);
+                //avvia la finestra corrispondente
+                startActivity(activity);
+            }
+        });
+
+        /**riscaldamento*/
+        immagini[2].setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View arg0){
+
+                Intent activity = new Intent(getBaseContext(), Gestione.class);
+                //avvia la finestra corrispondente
+                startActivity(activity);
+            }
+        });
+
+        /**programmazione*/
+        immagini[3].setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View arg0){
+
+                Intent activity = new Intent(getBaseContext(), Programmazione.class);
+                //avvia la finestra corrispondente
+                startActivity(activity);
+            }
+        });
+
+        /**nuova stanza**/
+        immagini[4].setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View arg0){
 
@@ -52,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        immagini[6].setOnClickListener(new View.OnClickListener(){
+        /**impostazioni*/
+        immagini[5].setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View arg0){
 
