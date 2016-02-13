@@ -18,7 +18,7 @@ public class Gestione extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestione);
 
-
+        //TODO impostare le interazioni dinamicamente
 
     }
 }
