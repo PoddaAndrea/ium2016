@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Tapparelle"></activity>
+        <activity android:name=".Tapparelle" />
+        <activity android:name=".Luci" />
+        <activity android:name=".Riscaldamento"></activity>
     </application>
 
 </manifest>

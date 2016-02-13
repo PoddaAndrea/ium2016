@@ -10,7 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ium.dycklanguage.domotric.MainActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,18 +23,21 @@
             >
 
             <ImageView
+                android:id="@+id/immagine1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@mipmap/ic_launcher"/>
 
             <ImageView
+                android:id="@+id/immagine2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@mipmap/ic_launcher"/>
 
             <ImageView
+                android:id="@+id/immagine3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -49,18 +51,21 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/immagine4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@mipmap/ic_launcher"/>
 
             <ImageView
+                android:id="@+id/immagine5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@mipmap/ic_launcher"/>
 
             <ImageView
+                android:id="@+id/immagine6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
