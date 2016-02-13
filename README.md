@@ -1,6 +1,7 @@
-#Proposta di progetto di IUM: Domotric 
+#Domotric 
 
-Progetto finale corso di Interazione Uomo Macchina
+Progetto finale corso di Interazione Uomo Macchina, a.a. 2015/2016
+Università degli Studi di Cagliari - Corso di laurea in Informatica
 
 Descrizione
 
