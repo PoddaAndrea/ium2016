@@ -9,13 +9,92 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ium.dycklanguage.domotric.NuovaProgrammazione">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome programmazione"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/nomeNP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Inserisci il nome della programmazione"
+                android:textColor="#ffffff"
+                android:scrollHorizontally="false"
+                android:singleLine="true"
+                android:layout_marginBottom="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stanza"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipologia"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold" />
+
+            <CheckedTextView
+                android:id="@+id/checkedTextView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checked="true"
+                android:text="Tutto il giorno"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50sp"
+                android:layout_marginRight="50sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orario"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold" />
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Conferma"/>
 
 </RelativeLayout>

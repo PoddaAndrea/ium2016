@@ -10,12 +10,13 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
-import ium.dycklanguage.domotric.classi.Stanza;
+import ium.dycklanguage.domotric.classi.*;
 
 public class MainActivity extends AppCompatActivity {
 
     static public ArrayList<Stanza> stanza = new ArrayList<>();
     public ImageView[] immagini = new ImageView[6];
+    static public ArrayList<ium.dycklanguage.domotric.classi.Programmazione> automazione = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
