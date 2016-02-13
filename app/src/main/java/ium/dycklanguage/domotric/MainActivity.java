@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         stanza.add(new Stanza("Cucina", true, false, false, 5, 0, 0, true));
         stanza.add(new Stanza("Salone", false, false, false, 0, 0, 0, false));
-        stanza.add(new Stanza("Camera", false, true, false, 0, 0, 25, false));
+        stanza.add(new Stanza("Camera", false, true, false, 0, 25, 0, false));
 
         /**gestione luci*/
         immagini[0].setOnClickListener(new View.OnClickListener() {
