@@ -15,12 +15,16 @@ public class NuovaProgrammazione extends AppCompatActivity {
     EditText dataInizio, dataFine, oraInizio, oraFine, stanza, tipo;
     DatePickerFragment datePickerFragment;
 
+    boolean isResumed = false;
     Button conferma;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuova_programmazione);
+
+        isResumed = false;  // utilizzo questo per gestire il focus in modo corretto
+        datePickerFragment = new DatePickerFragment();
 
         stanza = (EditText) findViewById(R.id.stanzaNP);
         tipo = (EditText) findViewById(R.id.tipologiaNP);
@@ -44,6 +48,8 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 datePickerFragment.show(getFragmentManager(), "datePicker");
             }
         });
+
+
 
         conferma.setOnClickListener(new View.OnClickListener() {
             @Override
