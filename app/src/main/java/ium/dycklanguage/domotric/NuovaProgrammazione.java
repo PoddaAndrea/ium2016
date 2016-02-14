@@ -34,6 +34,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
         oraInizio = (EditText) findViewById(R.id.oraINP);
         oraFine = (EditText) findViewById(R.id.oraFNP);
 
+        conferma = (Button) findViewById(R.id.confermaNP);
 
         dataInizio.setOnClickListener(new View.OnClickListener() {
             @Override
