@@ -17,10 +17,14 @@
         </activity>
         <activity android:name=".Tapparelle" />
         <activity android:name=".Luci" />
-        <activity android:name=".Riscaldamento" />
-        <activity android:name=".Programmazione" />
-        <activity android:name=".Gestione" />
-        <activity android:name=".NuovaProgrammazione"></activity>
+        <activity android:name=".Riscaldamento"
+            android:parentActivityName=".Gestione"/>
+        <activity android:name=".Programmazione"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Gestione"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".NuovaProgrammazione"
+            android:parentActivityName=".Programmazione"></activity>
     </application>
 
 </manifest>
