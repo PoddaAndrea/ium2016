@@ -7,19 +7,24 @@ import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import ium.dycklanguage.domotric.classi.DatePickerFragment;
 
 public class NuovaProgrammazione extends AppCompatActivity {
 
-    EditText dataInizio, dataFine, oraInizio, oraFine, stanza, tipo;
+    EditText dataInizio, dataFine, oraInizio, oraFine;
+    Spinner stanza, tipo;
     DatePickerFragment[] datePickerFragment = new DatePickerFragment[2];
     CheckedTextView tuttoIlGiorno;
 
@@ -39,8 +44,8 @@ public class NuovaProgrammazione extends AppCompatActivity {
         datePickerFragment[1] = new DatePickerFragment();
 
 
-        stanza = (EditText) findViewById(R.id.stanzaNP);
-        tipo = (EditText) findViewById(R.id.tipologiaNP);
+        stanza = (Spinner) findViewById(R.id.stanzaNP);
+        tipo = (Spinner) findViewById(R.id.tipologiaNP);
 
         dataInizio = (EditText) findViewById(R.id.dataINP);
         dataFine = (EditText) findViewById(R.id.dataFNP);
@@ -51,13 +56,23 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
         conferma = (Button) findViewById(R.id.confermaNP);
 
-        stanza.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selezionaStanza();
 
-            }
-        });
+        List<String> list = new ArrayList<>();
+        list.add("Cucina");
+        list.add("Camera");
+        list.add("Salone");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        stanza.setAdapter(dataAdapter);
+
+
+        List<String> list1 = new ArrayList<>();
+        list1.add("Luce");
+        list1.add("Tapparelle");
+        list1.add("Riscaldamento");
+        ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list1);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        tipo.setAdapter(dataAdapter1);
 
         /**time picker data inizio*/
         dataInizio.setOnClickListener(new View.OnClickListener() {
@@ -214,27 +229,6 @@ public class NuovaProgrammazione extends AppCompatActivity {
         updateUI();
     }
 
-
-    public String selezionaStanza(){
-
-        stanze[0] = "Cucina";
-        stanze[1] = "Camera";
-        stanze[2] = "Salone";
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Scegli una stanza")
-                .setItems(stanze, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        scelta = stanze[which];
-                    }
-                });
-
-        builder.create();
-
-        return scelta;
-    }
-
     void salvaeChiudi(){
 
 
@@ -251,7 +245,6 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
     void updateUI(){
 
-        stanza.setText(scelta);
 
     }
 }

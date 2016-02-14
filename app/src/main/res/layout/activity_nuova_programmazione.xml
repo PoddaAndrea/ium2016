@@ -45,14 +45,14 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/stanzaNP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Seleziona la stanza"
                 android:scrollHorizontally="false"
                 android:singleLine="true"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 />
 
             <TextView
@@ -62,14 +62,14 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/tipologiaNP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Seleziona la tipologia"
                 android:scrollHorizontally="false"
                 android:singleLine="true"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 />
 
             <TextView
@@ -96,6 +96,7 @@
                     android:singleLine="true"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="5dp"
+                    android:gravity="center"
                     />
 
                 <TextView
@@ -117,6 +118,7 @@
                     android:singleLine="true"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="5dp"
+                    android:gravity="center"
                     />
 
             </LinearLayout>
@@ -159,6 +161,7 @@
                     android:singleLine="true"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="5dp"
+                    android:gravity="center"
                     />
 
                 <TextView
@@ -180,6 +183,8 @@
                     android:singleLine="true"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="5dp"
+                    android:gravity="center"
+
                     />
 
             </LinearLayout>
