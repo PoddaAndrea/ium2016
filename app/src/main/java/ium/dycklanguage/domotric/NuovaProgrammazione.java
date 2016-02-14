@@ -38,6 +38,8 @@ public class NuovaProgrammazione extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuova_programmazione);
 
+        this.setTitle("Nuova programmazione");
+
         isResumed[0] = false;  // utilizzo questo per gestire il focus in modo corretto
         isResumed[1] = false;
         datePickerFragment[0] = new DatePickerFragment();

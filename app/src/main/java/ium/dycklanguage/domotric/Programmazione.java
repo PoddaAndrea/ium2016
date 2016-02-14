@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import ium.dycklanguage.domotric.classi.Listatore;
 
@@ -22,14 +24,32 @@ public class Programmazione extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_programmazione);
 
+        this.setTitle("Azioni programmate");
+
         avviaTutte = (Switch) findViewById(R.id.abilitaAzioni);
         addButton = (ImageView) findViewById(R.id.addButtonP);
 
-        //TODO gestione bottone generale
 
         list1 = (ListView)this.findViewById(R.id.azioneProgrammateLista);
         adapter = new Listatore(Programmazione.this, MainActivity.automazione);
         list1.setAdapter(adapter);
+
+        avviaTutte.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+
+                    avviaTutte.setChecked(true);
+                    Toast.makeText(Programmazione.this, "Avviate tutte le azioni programmate", Toast.LENGTH_LONG).show();
+
+                } else {
+
+                    avviaTutte.setChecked(false);
+
+                }
+
+            }
+        });
 
         addButton.setOnClickListener(new View.OnClickListener() {
 
@@ -44,10 +64,5 @@ public class Programmazione extends AppCompatActivity {
 
     }
 
-    void updateUI(){
-
-        this.list1.setAdapter(adapter);
-
-    }
 
 }

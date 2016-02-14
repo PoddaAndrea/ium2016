@@ -9,5 +9,9 @@ public class Riscaldamento extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_riscaldamento);
+
+        this.setTitle("Imposta riscaldamento");
+
+
     }
 }
