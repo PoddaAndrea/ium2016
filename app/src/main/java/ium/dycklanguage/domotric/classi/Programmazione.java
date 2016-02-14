@@ -12,6 +12,7 @@ public class Programmazione {
     private String giornoInizio;
     private String giornoFine;
     private boolean attivato;
+    private int percentuale;
 
     public Programmazione(){
 
@@ -92,5 +93,13 @@ public class Programmazione {
 
     public void setAttivato(boolean attivato) {
         this.attivato = attivato;
+    }
+
+    public int getPercentuale() {
+        return percentuale;
+    }
+
+    public void setPercentuale(int percentuale) {
+        this.percentuale = percentuale;
     }
 }
