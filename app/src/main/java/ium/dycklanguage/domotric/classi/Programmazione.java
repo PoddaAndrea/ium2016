@@ -11,6 +11,7 @@ public class Programmazione {
     private String oraFile;
     private String giornoInizio;
     private String giornoFine;
+    private boolean attivato;
 
     public Programmazione(){
 
@@ -25,6 +26,7 @@ public class Programmazione {
         this.setOraFile(of);
         this.setGiornoInizio(gi);
         this.setGiornoFine(gf);
+        this.setAttivato(true);
     }
 
     public String getNomeStanza() {
@@ -82,5 +84,13 @@ public class Programmazione {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public boolean isAttivato() {
+        return attivato;
+    }
+
+    public void setAttivato(boolean attivato) {
+        this.attivato = attivato;
     }
 }

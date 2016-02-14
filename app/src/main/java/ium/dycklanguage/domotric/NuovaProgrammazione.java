@@ -2,6 +2,7 @@ package ium.dycklanguage.domotric;
 
 import android.app.AlertDialog;
 import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,6 +23,8 @@ public class NuovaProgrammazione extends AppCompatActivity {
     DatePickerFragment[] datePickerFragment = new DatePickerFragment[2];
     CheckedTextView tuttoIlGiorno;
 
+    String scelta;
+    String[] stanze = new String[3];
     boolean[] isResumed = new boolean[4];
     Button conferma;
 
@@ -30,8 +34,10 @@ public class NuovaProgrammazione extends AppCompatActivity {
         setContentView(R.layout.activity_nuova_programmazione);
 
         isResumed[0] = false;  // utilizzo questo per gestire il focus in modo corretto
+        isResumed[1] = false;
         datePickerFragment[0] = new DatePickerFragment();
-        //tuttoIlGiorno = new CheckedTextView();
+        datePickerFragment[1] = new DatePickerFragment();
+
 
         stanza = (EditText) findViewById(R.id.stanzaNP);
         tipo = (EditText) findViewById(R.id.tipologiaNP);
@@ -44,6 +50,14 @@ public class NuovaProgrammazione extends AppCompatActivity {
         tuttoIlGiorno = (CheckedTextView) findViewById(R.id.checkedTextView1);
 
         conferma = (Button) findViewById(R.id.confermaNP);
+
+        stanza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selezionaStanza();
+
+            }
+        });
 
         /**time picker data inizio*/
         dataInizio.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +92,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
         });
 
 
-        /**time picker data inizio*/
+        /**time picker data fine*/
         dataFine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,7 +100,109 @@ public class NuovaProgrammazione extends AppCompatActivity {
             }
         });
 
+        dataFine.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean focus) {
+                if (focus && isResumed[1]) {
+                    datePickerFragment[1].show(getFragmentManager(), "datePicker");
+                }
+            }
+        });
 
+        datePickerFragment[1].setOnDatePickerFragmentChanged(new DatePickerFragment.DatePickerFragmentListener() {
+            @Override
+            public void onDatePickerFragmentOkButton(DialogFragment dialog, Calendar date) {
+                // trasferiamo il valore sul campo di testo
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                dataFine.setText(format.format(date.getTime()));
+            }
+
+            @Override
+            public void onDatePickerFragmentCancelButton(DialogFragment dialog) {
+                // non facciamo nulla
+            }
+        });
+
+
+        oraInizio.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(NuovaProgrammazione.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        oraInizio.setText("" + selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Seleziona l'ora di inizio");
+                mTimePicker.show();
+
+            }
+        });
+
+        oraInizio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean focus) {
+                if (focus && isResumed[1]) {
+                    Calendar mcurrentTime = Calendar.getInstance();
+                    int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                    int minute = mcurrentTime.get(Calendar.MINUTE);
+                    TimePickerDialog mTimePicker;
+                    mTimePicker = new TimePickerDialog(NuovaProgrammazione.this, new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                            oraInizio.setText("" + selectedHour + ":" + selectedMinute);
+                        }
+                    }, hour, minute, true);//Yes 24 hour time
+                    mTimePicker.setTitle("Seleziona l'ora di inizio");
+                    mTimePicker.show();
+                }
+            }
+        });
+
+        oraFine.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(NuovaProgrammazione.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        oraInizio.setText("" + selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Seleziona l'ora di fine");
+                mTimePicker.show();
+
+            }
+        });
+
+        oraFine.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean focus) {
+                if (focus && isResumed[1]) {
+                    Calendar mcurrentTime = Calendar.getInstance();
+                    int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                    int minute = mcurrentTime.get(Calendar.MINUTE);
+                    TimePickerDialog mTimePicker;
+                    mTimePicker = new TimePickerDialog(NuovaProgrammazione.this, new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                            oraFine.setText("" + selectedHour + ":" + selectedMinute);
+                        }
+                    }, hour, minute, true);//Yes 24 hour time
+                    mTimePicker.setTitle("Seleziona l'ora di inizio");
+                    mTimePicker.show();
+                }
+            }
+        });
 
         conferma.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,12 +210,13 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 salvaeChiudi();
             }
         });
+
+        updateUI();
     }
 
 
-    void selezionaStanza(){
+    public String selezionaStanza(){
 
-        String[] stanze = new String[3];
         stanze[0] = "Cucina";
         stanze[1] = "Camera";
         stanze[2] = "Salone";
@@ -108,13 +225,14 @@ public class NuovaProgrammazione extends AppCompatActivity {
         builder.setTitle("Scegli una stanza")
                 .setItems(stanze, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // The 'which' argument contains the index position
-                        // of the selected item
+
+                        scelta = stanze[which];
                     }
                 });
 
         builder.create();
 
+        return scelta;
     }
 
     void salvaeChiudi(){
@@ -127,5 +245,13 @@ public class NuovaProgrammazione extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         isResumed[0] = true;
+        isResumed[1] = true;
+    }
+
+
+    void updateUI(){
+
+        stanza.setText(scelta);
+
     }
 }

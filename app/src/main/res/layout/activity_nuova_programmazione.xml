@@ -88,7 +88,7 @@
 
                 <EditText
                     android:id="@+id/dataINP"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:hint="Data inizio"
@@ -98,9 +98,18 @@
                     android:layout_marginRight="5dp"
                     />
 
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=" _ "
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    />
+
                 <EditText
                     android:id="@+id/dataFNP"
-                    android:layout_width="match_parent"
+                    android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:hint="Data fine"
@@ -142,22 +151,31 @@
 
                 <EditText
                     android:id="@+id/oraINP"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="Data inizio"
+                    android:hint="Ora inizio"
                     android:scrollHorizontally="false"
                     android:singleLine="true"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="5dp"
                     />
 
-                <EditText
-                    android:id="@+id/oraFNP"
+                <TextView
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text=" _ "
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    />
+
+                <EditText
+                    android:id="@+id/oraFNP"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:hint="Data fine"
+                    android:hint="Ora fine"
                     android:scrollHorizontally="false"
                     android:singleLine="true"
                     android:layout_marginBottom="10dp"
