@@ -1,21 +1,27 @@
 package ium.dycklanguage.domotric;
 
 import android.app.AlertDialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.EditText;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import ium.dycklanguage.domotric.classi.DatePickerFragment;
 
 public class NuovaProgrammazione extends AppCompatActivity {
 
     EditText dataInizio, dataFine, oraInizio, oraFine, stanza, tipo;
-    DatePickerFragment datePickerFragment;
+    DatePickerFragment[] datePickerFragment = new DatePickerFragment[2];
+    CheckedTextView tuttoIlGiorno;
 
-    boolean isResumed = false;
+    boolean[] isResumed = new boolean[4];
     Button conferma;
 
     @Override
@@ -23,8 +29,9 @@ public class NuovaProgrammazione extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuova_programmazione);
 
-        isResumed = false;  // utilizzo questo per gestire il focus in modo corretto
-        datePickerFragment = new DatePickerFragment();
+        isResumed[0] = false;  // utilizzo questo per gestire il focus in modo corretto
+        datePickerFragment[0] = new DatePickerFragment();
+        //tuttoIlGiorno = new CheckedTextView();
 
         stanza = (EditText) findViewById(R.id.stanzaNP);
         tipo = (EditText) findViewById(R.id.tipologiaNP);
@@ -34,19 +41,48 @@ public class NuovaProgrammazione extends AppCompatActivity {
         oraInizio = (EditText) findViewById(R.id.oraINP);
         oraFine = (EditText) findViewById(R.id.oraFNP);
 
+        tuttoIlGiorno = (CheckedTextView) findViewById(R.id.checkedTextView1);
+
         conferma = (Button) findViewById(R.id.confermaNP);
 
+        /**time picker data inizio*/
         dataInizio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                datePickerFragment.show(getFragmentManager(), "datePicker");
+                datePickerFragment[0].show(getFragmentManager(), "datePicker");
             }
         });
 
+        dataInizio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean focus) {
+                if (focus && isResumed[0]) {
+                    datePickerFragment[0].show(getFragmentManager(), "datePicker");
+                }
+            }
+        });
+
+        // ci registriamo agli eventi del popup (ok e annulla)
+        datePickerFragment[0].setOnDatePickerFragmentChanged(new DatePickerFragment.DatePickerFragmentListener() {
+            @Override
+            public void onDatePickerFragmentOkButton(DialogFragment dialog, Calendar date) {
+                // trasferiamo il valore sul campo di testo
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                dataInizio.setText(format.format(date.getTime()));
+            }
+
+            @Override
+            public void onDatePickerFragmentCancelButton(DialogFragment dialog) {
+                // non facciamo nulla
+            }
+        });
+
+
+        /**time picker data inizio*/
         dataFine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                datePickerFragment.show(getFragmentManager(), "datePicker");
+                datePickerFragment[1].show(getFragmentManager(), "datePicker");
             }
         });
 
@@ -85,5 +121,11 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
 
         finish();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        isResumed[0] = true;
     }
 }

@@ -1,20 +1,30 @@
 package ium.dycklanguage.domotric.classi;
 
-import java.text.DateFormat;
-
 
 
 public class Programmazione {
 
+    private String nome;
     private String nomeStanza;
     private String tipoProgrammazione;
-    private DateFormat oraInizio;
-    private DateFormat oraFile;
-    private DateFormat giornoInizio;
-    private DateFormat giornoFine;
+    private String oraInizio;
+    private String oraFile;
+    private String giornoInizio;
+    private String giornoFine;
 
     public Programmazione(){
 
+    }
+
+    public Programmazione(String nome, String nomeS, String tipo, String oi, String of, String gi, String gf ){
+
+        this.setNome(nome);
+        this.setNomeStanza(nomeS);
+        this.setTipoProgrammazione(tipo);
+        this.setOraInizio(oi);
+        this.setOraFile(of);
+        this.setGiornoInizio(gi);
+        this.setGiornoFine(gf);
     }
 
     public String getNomeStanza() {
@@ -33,35 +43,44 @@ public class Programmazione {
         this.tipoProgrammazione = tipoProgrammazione;
     }
 
-    public DateFormat getOraInizio() {
+
+    public String getOraInizio() {
         return oraInizio;
     }
 
-    public void setOraInizio(DateFormat oraInizio) {
+    public void setOraInizio(String oraInizio) {
         this.oraInizio = oraInizio;
     }
 
-    public DateFormat getOraFile() {
+    public String getOraFile() {
         return oraFile;
     }
 
-    public void setOraFile(DateFormat oraFile) {
+    public void setOraFile(String oraFile) {
         this.oraFile = oraFile;
     }
 
-    public DateFormat getGiornoInizio() {
+    public String getGiornoInizio() {
         return giornoInizio;
     }
 
-    public void setGiornoInizio(DateFormat giornoInizio) {
+    public void setGiornoInizio(String giornoInizio) {
         this.giornoInizio = giornoInizio;
     }
 
-    public DateFormat getGiornoFine() {
+    public String getGiornoFine() {
         return giornoFine;
     }
 
-    public void setGiornoFine(DateFormat giornoFine) {
+    public void setGiornoFine(String giornoFine) {
         this.giornoFine = giornoFine;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
