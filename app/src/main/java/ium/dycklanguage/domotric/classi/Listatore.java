@@ -34,10 +34,11 @@ public class Listatore extends ArrayAdapter<Programmazione> {
         View rowView = inflater.inflate(R.layout.programmata, null, true);	//infila il file xml nell' intent
 
         TextView txtTitle = (TextView) rowView.findViewById(R.id.nomeAzione);
+        TextView stanza = (TextView) rowView.findViewById(R.id.stanzaProgr);
         TextView dataEora = (TextView) rowView.findViewById(R.id.nomeParametro);
 
-        txtTitle.setText(pr.get(position).getNomeStanza());
-
+        txtTitle.setText(pr.get(position).getNome());
+        stanza.setText(pr.get(position).getNomeStanza());
         dataEora.setText(pr.get(position).getTipoProgrammazione());
 
         return rowView;

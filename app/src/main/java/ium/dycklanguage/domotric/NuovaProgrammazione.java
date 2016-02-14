@@ -1,32 +1,32 @@
 package ium.dycklanguage.domotric;
 
-import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import ium.dycklanguage.domotric.classi.DatePickerFragment;
+import ium.dycklanguage.domotric.classi.*;
+import ium.dycklanguage.domotric.classi.Programmazione;
 
 public class NuovaProgrammazione extends AppCompatActivity {
 
-    EditText dataInizio, dataFine, oraInizio, oraFine;
+    EditText dataInizio, dataFine, oraInizio, oraFine, nome;
     Spinner stanza, tipo;
     DatePickerFragment[] datePickerFragment = new DatePickerFragment[2];
-    CheckedTextView tuttoIlGiorno;
+    //CheckedTextView tuttoIlGiorno;
 
     String scelta;
     String[] stanze = new String[3];
@@ -43,7 +43,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
         datePickerFragment[0] = new DatePickerFragment();
         datePickerFragment[1] = new DatePickerFragment();
 
-
+        nome = (EditText) findViewById(R.id.nomeNP);
         stanza = (Spinner) findViewById(R.id.stanzaNP);
         tipo = (Spinner) findViewById(R.id.tipologiaNP);
 
@@ -52,7 +52,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
         oraInizio = (EditText) findViewById(R.id.oraINP);
         oraFine = (EditText) findViewById(R.id.oraFNP);
 
-        tuttoIlGiorno = (CheckedTextView) findViewById(R.id.checkedTextView1);
+        //tuttoIlGiorno = (CheckedTextView) findViewById(R.id.checkedTextView1);
 
         conferma = (Button) findViewById(R.id.confermaNP);
 
@@ -61,6 +61,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
         list.add("Cucina");
         list.add("Camera");
         list.add("Salone");
+        list.add("Tutta la casa");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stanza.setAdapter(dataAdapter);
@@ -231,7 +232,19 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
     void salvaeChiudi(){
 
+        String nomeEvento = nome.getText().toString();
 
+        MainActivity.automazione.add(new Programmazione(nome.getText().toString(), stanza.getSelectedItem().toString(),
+                tipo.getSelectedItem().toString(), dataInizio.getText().toString(), dataFine.getText().toString(),
+                oraInizio.getText().toString(), oraFine.getText().toString()));
+
+        //Toast
+        Toast.makeText(this, "Nuovo evento " + nomeEvento + " creato!",Toast.LENGTH_LONG).show();
+
+        Intent asd = new Intent(getBaseContext(), ium.dycklanguage.domotric.Programmazione.class);
+
+        //avvia la finestra corrispondente
+        startActivity(asd);
         finish();
     }
 
@@ -247,4 +260,17 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+        Intent asd = new Intent(getBaseContext(), ium.dycklanguage.domotric.Programmazione.class);
+
+        //avvia la finestra corrispondente
+        startActivity(asd);
+
+        finish();
+    }
+
 }

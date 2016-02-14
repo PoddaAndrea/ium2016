@@ -14,6 +14,8 @@ public class Programmazione extends AppCompatActivity {
 
     ImageView addButton;
     Switch avviaTutte;
+    Listatore adapter;
+    ListView list1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +27,8 @@ public class Programmazione extends AppCompatActivity {
 
         //TODO gestione bottone generale
 
-        ListView list1 = (ListView)this.findViewById(R.id.azioneProgrammateLista);
-        Listatore adapter = new Listatore(Programmazione.this, MainActivity.automazione);
+        list1 = (ListView)this.findViewById(R.id.azioneProgrammateLista);
+        adapter = new Listatore(Programmazione.this, MainActivity.automazione);
         list1.setAdapter(adapter);
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -36,8 +38,16 @@ public class Programmazione extends AppCompatActivity {
                 Intent activity = new Intent(getBaseContext(), NuovaProgrammazione.class);
                 //avvia la finestra corrispondente
                 startActivity(activity);
+                finish();
             }
         });
 
     }
+
+    void updateUI(){
+
+        this.list1.setAdapter(adapter);
+
+    }
+
 }
