@@ -27,7 +27,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-
             <EditText
                 android:id="@+id/nomeNP"
                 android:layout_width="match_parent"
@@ -35,15 +34,26 @@
                 android:hint="Inserisci il nome della programmazione"
                 android:scrollHorizontally="false"
                 android:singleLine="true"
-                android:layout_marginBottom="10dp"
                 />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/errorText"
+                android:gravity="center"
+                android:textColor="#FF0000"
+                android:padding="5dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Stanza"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                />
 
             <Spinner
                 android:id="@+id/stanzaNP"
@@ -128,6 +138,26 @@
             </LinearLayout>
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/errorTextDi"
+                android:gravity="center"
+                android:textColor="#FF0000"
+                android:padding="5dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/errorTextDF"
+                android:gravity="center"
+                android:textColor="#FF0000"
+                android:padding="5dp"/>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Orario"
@@ -181,6 +211,26 @@
                     />
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/errorTextOI"
+                android:gravity="center"
+                android:textColor="#FF0000"
+                android:padding="5dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/errorTextOF"
+                android:gravity="center"
+                android:textColor="#FF0000"
+                android:padding="5dp"/>
 
             <Button
                 android:id="@+id/confermaNP"

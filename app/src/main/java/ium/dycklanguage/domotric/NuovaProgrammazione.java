@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
     EditText dataInizio, dataFine, oraInizio, oraFine, nome;
     Spinner stanza, tipo;
     DatePickerFragment[] datePickerFragment = new DatePickerFragment[2];
+    TextView errorText, erroreDI, erroreDF, erroreOI, erroreOF;
     //CheckedTextView tuttoIlGiorno;
 
     String scelta;
@@ -48,12 +50,25 @@ public class NuovaProgrammazione extends AppCompatActivity {
         nome = (EditText) findViewById(R.id.nomeNP);
         stanza = (Spinner) findViewById(R.id.stanzaNP);
         tipo = (Spinner) findViewById(R.id.tipologiaNP);
+        errorText = (TextView) findViewById(R.id.errorText);
+        erroreDI = (TextView) findViewById(R.id.errorTextDi);
+        erroreDF = (TextView) findViewById(R.id.errorTextDF);
+        erroreOI = (TextView) findViewById(R.id.errorTextOI);
+        erroreOF = (TextView) findViewById(R.id.errorTextOF);
+
 
         dataInizio = (EditText) findViewById(R.id.dataINP);
         dataFine = (EditText) findViewById(R.id.dataFNP);
         oraInizio = (EditText) findViewById(R.id.oraINP);
         oraFine = (EditText) findViewById(R.id.oraFNP);
 
+        // nascondiamo il messaggio di errore
+        errorText.setVisibility(View.GONE);
+        erroreDI.setVisibility(View.GONE);
+        erroreDF.setVisibility(View.GONE);
+        erroreOI.setVisibility(View.GONE);
+        erroreOF.setVisibility(View.GONE);
+        errorText.setText("");
         //tuttoIlGiorno = (CheckedTextView) findViewById(R.id.checkedTextView1);
 
         conferma = (Button) findViewById(R.id.confermaNP);
@@ -225,7 +240,13 @@ public class NuovaProgrammazione extends AppCompatActivity {
         conferma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                salvaeChiudi();
+
+                if(checkError())
+                    salvaeChiudi();
+                else
+                    Toast.makeText(NuovaProgrammazione.this,
+                            "Ci sono degli errori nella programmazione dell'azione.\n" +
+                            "Ricontrolla i campi segnati", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -264,6 +285,77 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
     }
 
+    public boolean checkError(){
+
+        boolean condizione = true;
+
+        if (nome.getText() == null || nome.getText().toString().length() == 0){
+
+            errorText.setVisibility(View.VISIBLE);
+            errorText.setText("Non hai inserito il nome dell'azione");
+
+            condizione = false;
+
+        } else {
+
+            errorText.setVisibility(View.GONE);
+            errorText.setText("");
+        }
+
+        if (dataInizio.getText() == null || dataInizio.getText().toString().length() == 0){
+
+            erroreDI.setVisibility(View.VISIBLE);
+            erroreDI.setText("Non hai inserito la data iniziale");
+
+            condizione = false;
+
+        } else {
+
+            erroreDI.setVisibility(View.GONE);
+            erroreDI.setText("");
+        }
+
+        if (dataFine.getText() == null || dataFine.getText().toString().length() == 0){
+
+            erroreDF.setVisibility(View.VISIBLE);
+            erroreDF.setText("Non hai inserito la data della fine");
+
+            condizione = false;
+
+        } else {
+
+            erroreDF.setVisibility(View.GONE);
+            erroreDF.setText("");
+        }
+
+        if (oraInizio.getText() == null || oraInizio.getText().toString().length() == 0){
+
+            erroreOI.setVisibility(View.VISIBLE);
+            erroreOI.setText("Non hai inserito l'orario d'inizio");
+
+            condizione = false;
+
+        } else {
+
+            erroreOI.setVisibility(View.GONE);
+            erroreOI.setText("");
+        }
+
+        if (oraFine.getText() == null || oraFine.getText().toString().length() == 0){
+
+            erroreOF.setVisibility(View.VISIBLE);
+            erroreOF.setText("Non hai inserito la data finale");
+
+            condizione = false;
+
+        } else {
+
+            erroreOF.setVisibility(View.GONE);
+            erroreOF.setText("");
+        }
+
+        return condizione;
+    }
 
     @Override
     public void onBackPressed() {

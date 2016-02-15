@@ -45,7 +45,7 @@ public class Gestione extends AppCompatActivity {
 
         statoStanza[0].setText("Non azionato");
         statoStanza[1].setText("Non azionato");
-        statoStanza[2].setText("22°C");
+        statoStanza[2].setText("Attivato\t 22°C");
 
         bottone[2].setChecked(true);
 
@@ -56,7 +56,7 @@ public class Gestione extends AppCompatActivity {
 
                     bottone[0].setChecked(true);
                     Toast.makeText(Gestione.this, "Riscaldamento attivato in Cucina", Toast.LENGTH_LONG).show();
-                    statoStanza[0].setText("22°C");
+                    statoStanza[0].setText("Attivato\t 22°C");
 
 
                 } else {
@@ -78,7 +78,7 @@ public class Gestione extends AppCompatActivity {
 
                     bottone[1].setChecked(true);
                     Toast.makeText(Gestione.this, "Riscaldamento attivato in Salone", Toast.LENGTH_LONG).show();
-                    statoStanza[1].setText("25°C");
+                    statoStanza[1].setText("Attivato\t 25°C");
 
                 } else {
 
@@ -98,7 +98,7 @@ public class Gestione extends AppCompatActivity {
 
                     bottone[2].setChecked(true);
                     Toast.makeText(Gestione.this, "Riscaldamento attivato in Camera", Toast.LENGTH_LONG).show();
-                    statoStanza[2].setText("22°C");
+                    statoStanza[2].setText("Attivato\t 22°C");
 
                 } else {
 
