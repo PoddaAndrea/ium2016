@@ -18,6 +18,8 @@ public class Gestione extends AppCompatActivity {
     static String selezione;
     View[] zona = new View[3];
 
+    Integer valore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +45,12 @@ public class Gestione extends AppCompatActivity {
         nomeStanza[1].setText(MainActivity.stanza.get(1).getNome());
         nomeStanza[2].setText(MainActivity.stanza.get(2).getNome());
 
+        valore = MainActivity.stanza.get(2).getPercentualeRiscaldamento();
+
+
         statoStanza[0].setText("Non azionato");
         statoStanza[1].setText("Non azionato");
-        statoStanza[2].setText("Attivato\t 22°C");
+        statoStanza[2].setText("Attivato\t " + valore.toString() +"°C");
 
         bottone[2].setChecked(true);
 
@@ -98,7 +103,7 @@ public class Gestione extends AppCompatActivity {
 
                     bottone[2].setChecked(true);
                     Toast.makeText(Gestione.this, "Riscaldamento attivato in Camera", Toast.LENGTH_LONG).show();
-                    statoStanza[2].setText("Attivato\t 22°C");
+                    statoStanza[2].setText("Attivato\t " + valore.toString() +"°C");
 
                 } else {
 
