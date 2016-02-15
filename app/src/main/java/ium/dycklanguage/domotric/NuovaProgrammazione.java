@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -28,7 +30,10 @@ public class NuovaProgrammazione extends AppCompatActivity {
     Spinner stanza, tipo;
     DatePickerFragment[] datePickerFragment = new DatePickerFragment[2];
     TextView errorText, erroreDI, erroreDF, erroreOI, erroreOF;
+    static TextView regolazioneParametro, valoreParametro;
     //CheckedTextView tuttoIlGiorno;
+    Integer min = 1, max = 5, valore = 3;
+    ImageView meno, piu;
 
     String scelta;
     String[] stanze = new String[3];
@@ -55,7 +60,14 @@ public class NuovaProgrammazione extends AppCompatActivity {
         erroreDF = (TextView) findViewById(R.id.errorTextDF);
         erroreOI = (TextView) findViewById(R.id.errorTextOI);
         erroreOF = (TextView) findViewById(R.id.errorTextOF);
+        regolazioneParametro = (TextView) findViewById(R.id.nomeRegolazione);
+        valoreParametro = (TextView) findViewById(R.id.valoreP);
 
+        meno = (ImageView) findViewById(R.id.menoNP);
+        piu = (ImageView) findViewById(R.id.piuNP);
+
+        regolazioneParametro.setText("Intensità luce");
+        valoreParametro.setText(valore.toString());
 
         dataInizio = (EditText) findViewById(R.id.dataINP);
         dataFine = (EditText) findViewById(R.id.dataFNP);
@@ -91,6 +103,59 @@ public class NuovaProgrammazione extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list1);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         tipo.setAdapter(dataAdapter1);
+
+        tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+                switch (position) {
+                    case 0:
+                        NuovaProgrammazione.regolazioneParametro.setText("Intensità luce");
+                        valore = 3;
+                        max = 5;
+                        valoreParametro.setText(valore.toString());
+                        break;
+                    case 1:
+                        NuovaProgrammazione.regolazioneParametro.setText("Altezza tapparelle");
+                        max = 10;
+                        valore = 5;
+                        valoreParametro.setText(valore.toString());
+                        break;
+                    case 2:
+                        NuovaProgrammazione.regolazioneParametro.setText("Gradi riscaldamento");
+                        max = 40;
+                        valore = 22;
+                        valoreParametro.setText(valore.toString());
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+        meno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (valore > min)
+                    valore--;
+                valoreParametro.setText(valore.toString());
+
+            }
+        });
+
+        piu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (valore < max)
+                    valore++;
+                valoreParametro.setText(valore.toString());
+
+            }
+        });
 
         /**time picker data inizio*/
         dataInizio.setOnClickListener(new View.OnClickListener() {
