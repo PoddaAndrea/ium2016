@@ -10,7 +10,8 @@ public class Riscaldamento extends AppCompatActivity {
 
     ImageView piu, meno, icona;
     TextView gradi;
-    Integer min = 0, max = 40, valore;
+    final Integer min = 0, max = 40;
+    Integer valore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class Riscaldamento extends AppCompatActivity {
 
         gradi.setText(valore.toString());
 
+        updatePic();
 
         meno.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,10 +38,9 @@ public class Riscaldamento extends AppCompatActivity {
                     valore--;
                 gradi.setText(valore.toString());
 
-                //// TODO: 15/02/16 inserire cambio icona
-                //
+                updatePic();
 
-                 MainActivity.stanza.get(2).setPercentualeRiscaldamento(valore);
+                MainActivity.stanza.get(2).setPercentualeRiscaldamento(valore);
 
             }
         });
@@ -52,11 +53,36 @@ public class Riscaldamento extends AppCompatActivity {
                     valore++;
                 gradi.setText(valore.toString());
 
+                updatePic();
+
                 MainActivity.stanza.get(2).setPercentualeRiscaldamento(valore);
 
             }
         });
 
 
+    }
+
+    public void updatePic(){
+
+        if (valore < 20){
+
+            icona.setImageResource(R.mipmap.logo_condizionatore);
+        }
+        if (valore > 20){
+
+            icona.setImageResource(R.mipmap.logo_condizionatore);
+
+        }
+        if (valore > 25){
+
+            icona.setImageResource(R.mipmap.logo_condizionatore);
+
+        }
+        if (valore < 15){
+
+            icona.setImageResource(R.mipmap.logo_condizionatore);
+
+        }
     }
 }

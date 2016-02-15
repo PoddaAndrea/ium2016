@@ -111,6 +111,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         NuovaProgrammazione.regolazioneParametro.setText("Intensità luce");
+                        min = 1;
                         valore = 3;
                         max = 5;
                         valoreParametro.setText(valore.toString());
@@ -119,6 +120,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
                         NuovaProgrammazione.regolazioneParametro.setText("Altezza tapparelle");
                         max = 10;
                         valore = 5;
+                        min = 0;
                         valoreParametro.setText(valore.toString());
                         break;
                     case 2:
