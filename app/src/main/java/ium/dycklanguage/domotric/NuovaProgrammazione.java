@@ -237,8 +237,9 @@ public class NuovaProgrammazione extends AppCompatActivity {
         String nomeEvento = nome.getText().toString();
 
         MainActivity.automazione.add(new Programmazione(nome.getText().toString(), stanza.getSelectedItem().toString(),
-                tipo.getSelectedItem().toString(), dataInizio.getText().toString(), dataFine.getText().toString(),
-                oraInizio.getText().toString(), oraFine.getText().toString()));
+                tipo.getSelectedItem().toString(),
+                oraInizio.getText().toString(), oraFine.getText().toString(),
+                dataInizio.getText().toString(), dataFine.getText().toString()));
 
         //Toast
         Toast.makeText(this, "Nuovo evento " + nomeEvento + " creato!",Toast.LENGTH_LONG).show();

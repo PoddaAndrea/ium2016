@@ -19,7 +19,8 @@
             android:id="@+id/id1"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="#ffffff">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,7 +71,8 @@
             android:id="@+id/id2"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="#ffffff">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,7 +123,8 @@
             android:id="@+id/id3"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="#ffffff">
 
             <LinearLayout
                 android:layout_width="match_parent"

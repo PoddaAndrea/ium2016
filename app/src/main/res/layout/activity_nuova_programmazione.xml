@@ -188,7 +188,9 @@
                 android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Conferma"/>
+                android:text="Conferma"
+                android:background="#169912"
+                android:textColor="#ffffff"/>
 
         </LinearLayout>
 
