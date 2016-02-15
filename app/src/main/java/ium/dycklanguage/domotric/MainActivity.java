@@ -58,9 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
             public void onClick(View arg0) {
 
-                Intent activity = new Intent(getBaseContext(), Gestione.class);
-                //avvia la finestra corrispondente
-                startActivity(activity);
+                funzionalitaMancante();
+
             }
         });
 
