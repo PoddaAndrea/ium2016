@@ -50,9 +50,16 @@ public class Gestione extends AppCompatActivity {
 
         statoStanza[0].setText("Non azionato");
         statoStanza[1].setText("Non azionato");
-        statoStanza[2].setText("Attivato\t " + valore.toString() +"°C");
+        statoStanza[2].setText("Attivato\t " + valore.toString() + "°C");
 
-        bottone[2].setChecked(true);
+        if (MainActivity.stanza.get(2).isRiscaldamento()) {
+            bottone[2].setChecked(true);
+            statoStanza[2].setText("Attivato\t " + valore.toString() + "°C");
+        }
+        else {
+            bottone[2].setChecked(false);
+            statoStanza[2].setText("Non azionato");
+        }
 
         bottone[0].setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -102,12 +109,14 @@ public class Gestione extends AppCompatActivity {
                 if (isChecked) {
 
                     bottone[2].setChecked(true);
+                    MainActivity.stanza.get(2).setRiscaldamento(true);
                     Toast.makeText(Gestione.this, "Riscaldamento attivato in Camera", Toast.LENGTH_LONG).show();
-                    statoStanza[2].setText("Attivato\t " + valore.toString() +"°C");
+                    statoStanza[2].setText("Attivato\t " + valore.toString() + "°C");
 
                 } else {
 
                     bottone[2].setChecked(false);
+                    MainActivity.stanza.get(2).setRiscaldamento(false);
                     Toast.makeText(Gestione.this, "Riscaldamento disattivato in Camera", Toast.LENGTH_LONG).show();
                     statoStanza[2].setText("Non azionato");
 
@@ -117,9 +126,9 @@ public class Gestione extends AppCompatActivity {
         });
 
 
-        zona[2].setOnClickListener(new View.OnClickListener(){
+        zona[2].setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View arg0){
+            public void onClick(View arg0) {
 
                 Intent activity = new Intent(getBaseContext(), Riscaldamento.class);
                 //avvia la finestra corrispondente

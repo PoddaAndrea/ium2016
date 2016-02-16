@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Riscaldamento extends AppCompatActivity {
 
@@ -38,13 +39,19 @@ public class Riscaldamento extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (acceso){
+                if (MainActivity.stanza.get(2).isRiscaldamento()){
 
                     icona.setImageResource(R.mipmap.logo_condizionatore);
-                    acceso = false;
-                } else
+                    MainActivity.stanza.get(2).setRiscaldamento(false);
+                    Toast.makeText(Riscaldamento.this,
+                            "Hai spento il riscaldamento in Camera", Toast.LENGTH_LONG).show();
+                } else {
+                    MainActivity.stanza.get(2).setRiscaldamento(true);
                     updatePic();
-
+                    Toast.makeText(Riscaldamento.this,
+                            "Hai acceso il riscaldamento in Camera a " + valore.toString() +
+                                    "°C", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -82,26 +89,30 @@ public class Riscaldamento extends AppCompatActivity {
 
     public void updatePic(){
 
-        if(!acceso)
+        if(!MainActivity.stanza.get(2).isRiscaldamento())
             icona.setImageResource(R.mipmap.logo_condizionatore);
 
-        if (valore < 20){
+        else {
 
-            icona.setImageResource(R.mipmap.logo_condizionatore2);
-        }
-        if (valore >= 20){
+            if (valore < 20) {
 
-            icona.setImageResource(R.mipmap.logo_condizionatore3);
+                icona.setImageResource(R.mipmap.logo_condizionatore2);
+            }
+            if (valore >= 20) {
 
-        }
-        if (valore > 25){
+                icona.setImageResource(R.mipmap.logo_condizionatore3);
 
-            icona.setImageResource(R.mipmap.logo_condizionatore4);
+            }
+            if (valore > 25) {
 
-        }
-        if (valore < 15){
+                icona.setImageResource(R.mipmap.logo_condizionatore4);
 
-            icona.setImageResource(R.mipmap.logo_condizionatore1);
+            }
+            if (valore < 15) {
+
+                icona.setImageResource(R.mipmap.logo_condizionatore1);
+
+            }
 
         }
     }
