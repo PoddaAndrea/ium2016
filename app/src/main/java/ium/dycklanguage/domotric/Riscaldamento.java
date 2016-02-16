@@ -12,6 +12,7 @@ public class Riscaldamento extends AppCompatActivity {
     TextView gradi;
     final Integer min = 0, max = 40;
     Integer valore;
+    boolean acceso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,8 @@ public class Riscaldamento extends AppCompatActivity {
         setContentView(R.layout.activity_riscaldamento);
 
         this.setTitle("Imposta riscaldamento");
+
+        acceso = MainActivity.stanza.get(2).isRiscaldamento();
 
         piu = (ImageView) findViewById(R.id.piuR);
         meno = (ImageView) findViewById(R.id.menoR);
@@ -30,6 +33,20 @@ public class Riscaldamento extends AppCompatActivity {
         gradi.setText(valore.toString());
 
         updatePic();
+
+        icona.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (acceso){
+
+                    icona.setImageResource(R.mipmap.logo_condizionatore);
+                    acceso = false;
+                } else
+                    updatePic();
+
+            }
+        });
 
         meno.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,23 +82,26 @@ public class Riscaldamento extends AppCompatActivity {
 
     public void updatePic(){
 
+        if(!acceso)
+            icona.setImageResource(R.mipmap.logo_condizionatore);
+
         if (valore < 20){
 
-            icona.setImageResource(R.mipmap.logo_condizionatore);
+            icona.setImageResource(R.mipmap.logo_condizionatore2);
         }
-        if (valore > 20){
+        if (valore >= 20){
 
-            icona.setImageResource(R.mipmap.logo_condizionatore);
+            icona.setImageResource(R.mipmap.logo_condizionatore3);
 
         }
         if (valore > 25){
 
-            icona.setImageResource(R.mipmap.logo_condizionatore);
+            icona.setImageResource(R.mipmap.logo_condizionatore4);
 
         }
         if (valore < 15){
 
-            icona.setImageResource(R.mipmap.logo_condizionatore);
+            icona.setImageResource(R.mipmap.logo_condizionatore1);
 
         }
     }
