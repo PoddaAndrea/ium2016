@@ -94,6 +94,18 @@ public class Riscaldamento extends AppCompatActivity {
 
         else {
 
+            if(valore == 1)
+                meno.setImageResource(R.mipmap.button_meno);
+
+            if (valore == 40)
+                piu.setImageResource(R.mipmap.button_piu_grey);
+
+            if (valore == 0)
+                meno.setImageResource(R.mipmap.button_meno_grey);
+
+            if(valore == 39)
+                piu.setImageResource(R.mipmap.button_piu);
+
             if (valore < 20) {
 
                 icona.setImageResource(R.mipmap.logo_condizionatore2);

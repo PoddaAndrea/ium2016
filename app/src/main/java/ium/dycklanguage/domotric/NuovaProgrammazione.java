@@ -237,6 +237,12 @@ public class NuovaProgrammazione extends AppCompatActivity {
                     valore--;
                 valoreParametro.setText(valore.toString() +"°C");
 
+                if (valore == 0)
+                    meno.setImageResource(R.mipmap.button_meno_grey);
+
+                if(valore == 39)
+                    piu.setImageResource(R.mipmap.button_piu);
+
             }
         });
 
@@ -246,6 +252,12 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 if (valore < max)
                     valore++;
                 valoreParametro.setText(valore.toString() +"°C");
+
+                if(valore == 1)
+                    meno.setImageResource(R.mipmap.button_meno);
+
+                if (valore == 40)
+                    piu.setImageResource(R.mipmap.button_piu_grey);
 
             }
         });
