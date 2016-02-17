@@ -29,7 +29,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
     EditText oraInizio, oraFine, nome;
     DatePickerFragment[] datePickerFragment = new DatePickerFragment[2];
-    TextView errorText,  erroreOI, erroreOF;
+    TextView errorText,  erroreOI, erroreOF, errorStanza, errorTipo;
     static TextView regolazioneParametro, valoreParametro;
     //CheckedTextView tuttoIlGiorno;
     Integer min = 0, max = 40, valore = 20;
@@ -41,6 +41,10 @@ public class NuovaProgrammazione extends AppCompatActivity {
     Button conferma;
     CheckedTextView riscaldamentoC, luceC, tapparelleC, cucinaC, cameraC, saloneC;
     View riscaldamentoV, luceV, tapparelleV;
+    String[] flahes = new String[3];
+    ArrayList<String> stanzeScelte = new ArrayList<>();
+    String[] tlahes = new String[3];
+    ArrayList<String> tipoScelto = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,10 +80,18 @@ public class NuovaProgrammazione extends AppCompatActivity {
         cameraC = (CheckedTextView) findViewById(R.id.checkedTextViewCamera);
         saloneC = (CheckedTextView) findViewById(R.id.checkedTextViewSalone);
 
+        stanzeScelte.clear();
+        tipoScelto.clear();
 
         luceC.setChecked(false);
         tapparelleC.setChecked(false);
         riscaldamentoC.setChecked(false);
+
+        errorStanza = (TextView) findViewById(R.id.errorTextStanza);
+        errorTipo = (TextView) findViewById(R.id.errorTextTipo);
+
+        errorStanza.setVisibility(View.GONE);
+        errorTipo.setVisibility(View.GONE);
 
         cameraC.setChecked(false);
         cucinaC.setChecked(false);
@@ -107,6 +119,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
         conferma = (Button) findViewById(R.id.confermaNP);
 
 
+
         List<String> list = new ArrayList<>();
         list.add("Cucina");
         list.add("Camera");
@@ -129,9 +142,10 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
                 if (cucinaC.isChecked() == false) {
                     cucinaC.setChecked(true);
+                    flahes[0] = "Cucina";
                 } else {
                     cucinaC.setChecked(false);
-
+                    flahes[0] = null;
                 }
             }
         });
@@ -142,9 +156,10 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
                 if (saloneC.isChecked() == false) {
                     saloneC.setChecked(true);
+                    flahes[1] = "Salone";
                 } else {
                     saloneC.setChecked(false);
-
+                    flahes[1] = null;
                 }
             }
         });
@@ -155,9 +170,10 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
                 if (cameraC.isChecked() == false) {
                     cameraC.setChecked(true);
+                    flahes[2] = "Camera";
                 } else {
                     cameraC.setChecked(false);
-
+                    flahes[2] = null;
                 }
             }
         });
@@ -169,9 +185,11 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 if (tapparelleC.isChecked() == false) {
                     tapparelleC.setChecked(true);
                     tapparelleV.setVisibility(View.VISIBLE);
+                    tlahes[2] = "Tapparelle";
                 } else {
                     tapparelleC.setChecked(false);
                     tapparelleV.setVisibility(View.GONE);
+                    tlahes[2] = null;
 
                 }
             }
@@ -184,10 +202,12 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 if (luceC.isChecked() == false){
                     luceC.setChecked(true);
                     luceV.setVisibility(View.VISIBLE);
+                    tlahes[0] = "Luce";
                 }
                 else{
                     luceC.setChecked(false);
                     luceV.setVisibility(View.GONE);
+                    tlahes[0] = null;
 
                 }
             }
@@ -200,9 +220,11 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 if (riscaldamentoC.isChecked() == false) {
                     riscaldamentoC.setChecked(true);
                     riscaldamentoV.setVisibility(View.VISIBLE);
+                    tlahes[1] = "Riscaldamento";
                 } else {
                     riscaldamentoC.setChecked(false);
                     riscaldamentoV.setVisibility(View.GONE);
+                    tlahes[1] = null;
 
                 }
             }
@@ -314,6 +336,14 @@ public class NuovaProgrammazione extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                for (int i = 0; i<3; i++){
+                    if (flahes[i] != null)
+                        stanzeScelte.add(flahes[i]);
+
+                    if (tlahes[i] != null)
+                        tipoScelto.add(tlahes[i]);
+                }
+
                 if(checkError())
                     salvaeChiudi();
                 else
@@ -330,9 +360,10 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
         String nomeEvento = nome.getText().toString();
 
-        //TODO selezione stanza su arraylist
+
 
         MainActivity.automazione.add(new Programmazione(nome.getText().toString(),
+                stanzeScelte, tipoScelto,
                 oraInizio.getText().toString(), oraFine.getText().toString()));
 
 
@@ -363,6 +394,24 @@ public class NuovaProgrammazione extends AppCompatActivity {
     public boolean checkError(){
 
         boolean condizione = true;
+
+        if(stanzeScelte.size() == 0){
+            condizione = false;
+            errorStanza.setVisibility(View.VISIBLE);
+            errorTipo.setVisibility(View.GONE);
+        } else {
+            errorStanza.setVisibility(View.GONE);
+
+
+        }
+
+        if(tipoScelto.size() == 0){
+            condizione = false;
+            errorTipo.setVisibility(View.VISIBLE);
+        } else {
+            errorTipo.setVisibility(View.GONE);
+
+        }
 
         if (nome.getText() == null || nome.getText().toString().length() == 0){
 

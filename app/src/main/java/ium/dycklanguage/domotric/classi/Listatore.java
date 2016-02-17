@@ -1,6 +1,7 @@
 package ium.dycklanguage.domotric.classi;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,8 +47,9 @@ public class Listatore extends ArrayAdapter<Programmazione> {
         final Switch attiva = (Switch) rowView.findViewById(R.id.abilitaAzione);
 
         txtTitle.setText(pr.get(position).getNome());
-        stanza.setText(pr.get(position).getNomeStanza());
-        dataEora.setText(pr.get(position).getTipoProgrammazione());
+        stanza.setText(TextUtils.join(", ", pr.get(position).stanze));
+
+        dataEora.setText(TextUtils.join(", ", pr.get(position).tipo));
 
         attiva.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -56,8 +58,8 @@ public class Listatore extends ArrayAdapter<Programmazione> {
 
                     attiva.setChecked(true);
                     Toast.makeText(context, "Evento " + pr.get(positions).getNome() +
-                            " attivato per le " + pr.get(positions).getOraInizio() +
-                            " del " + pr.get(positions).getGiornoInizio(), Toast.LENGTH_LONG).show();
+                            " attivato per le " + pr.get(positions).getOraInizio()
+                            , Toast.LENGTH_LONG).show();
 
                 } else {
 

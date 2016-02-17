@@ -15,6 +15,7 @@ public class Programmazione {
     private boolean attivato;
     private int percentuale;
     public ArrayList<String> stanze = new ArrayList<>();
+    public ArrayList<String> tipo = new ArrayList<>();
 
     public Programmazione(){
 
@@ -29,12 +30,13 @@ public class Programmazione {
         this.setAttivato(true);
     }
 
-    public Programmazione(String nome, ArrayList<String> stanze , String oi, String of ){
+    public Programmazione(String nome, ArrayList<String> stanze , ArrayList<String> tipo , String oi, String of ){
 
         this.setNome(nome);
         this.setOraInizio(oi);
         this.setOraFile(of);
         this.stanze = stanze;
+        this.tipo = tipo;
         this.setAttivato(true);
     }
 
