@@ -37,15 +37,17 @@ public class Programmazione extends AppCompatActivity {
         avviaTutte.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked) {
+                if (MainActivity.automazione.size() > 0) {
+                    if (isChecked) {
 
-                    avviaTutte.setChecked(true);
-                    Toast.makeText(Programmazione.this, "Avviate tutte le azioni programmate", Toast.LENGTH_LONG).show();
+                        avviaTutte.setChecked(true);
+                        Toast.makeText(Programmazione.this, "Avviate tutte le azioni programmate", Toast.LENGTH_LONG).show();
 
-                } else {
+                    } else {
 
-                    avviaTutte.setChecked(false);
+                        avviaTutte.setChecked(false);
 
+                    }
                 }
 
             }
