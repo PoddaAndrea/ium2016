@@ -18,15 +18,14 @@ public class Programmazione {
 
     }
 
-    public Programmazione(String nome, String nomeS, String tipo, String oi, String of, String gi, String gf ){
+    public Programmazione(String nome, String nomeS, String tipo, String oi, String of ){
 
         this.setNome(nome);
         this.setNomeStanza(nomeS);
         this.setTipoProgrammazione(tipo);
         this.setOraInizio(oi);
         this.setOraFile(of);
-        this.setGiornoInizio(gi);
-        this.setGiornoFine(gf);
+
         this.setAttivato(true);
     }
 

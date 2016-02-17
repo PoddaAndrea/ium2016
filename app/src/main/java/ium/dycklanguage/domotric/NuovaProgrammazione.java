@@ -26,10 +26,10 @@ import ium.dycklanguage.domotric.classi.Programmazione;
 
 public class NuovaProgrammazione extends AppCompatActivity {
 
-    EditText dataInizio, dataFine, oraInizio, oraFine, nome;
+    EditText oraInizio, oraFine, nome;
     Spinner stanza, tipo;
     DatePickerFragment[] datePickerFragment = new DatePickerFragment[2];
-    TextView errorText, erroreDI, erroreDF, erroreOI, erroreOF;
+    TextView errorText,  erroreOI, erroreOF;
     static TextView regolazioneParametro, valoreParametro;
     //CheckedTextView tuttoIlGiorno;
     Integer min = 1, max = 5, valore = 3;
@@ -56,8 +56,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
         stanza = (Spinner) findViewById(R.id.stanzaNP);
         tipo = (Spinner) findViewById(R.id.tipologiaNP);
         errorText = (TextView) findViewById(R.id.errorText);
-        erroreDI = (TextView) findViewById(R.id.errorTextDi);
-        erroreDF = (TextView) findViewById(R.id.errorTextDF);
+
         erroreOI = (TextView) findViewById(R.id.errorTextOI);
         erroreOF = (TextView) findViewById(R.id.errorTextOF);
         regolazioneParametro = (TextView) findViewById(R.id.nomeRegolazione);
@@ -69,15 +68,13 @@ public class NuovaProgrammazione extends AppCompatActivity {
         regolazioneParametro.setText("Intensità luce");
         valoreParametro.setText(valore.toString());
 
-        dataInizio = (EditText) findViewById(R.id.dataINP);
-        dataFine = (EditText) findViewById(R.id.dataFNP);
+
         oraInizio = (EditText) findViewById(R.id.oraINP);
         oraFine = (EditText) findViewById(R.id.oraFNP);
 
         // nascondiamo il messaggio di errore
         errorText.setVisibility(View.GONE);
-        erroreDI.setVisibility(View.GONE);
-        erroreDF.setVisibility(View.GONE);
+
         erroreOI.setVisibility(View.GONE);
         erroreOF.setVisibility(View.GONE);
         errorText.setText("");
@@ -159,69 +156,6 @@ public class NuovaProgrammazione extends AppCompatActivity {
             }
         });
 
-        /**time picker data inizio*/
-        dataInizio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                datePickerFragment[0].show(getFragmentManager(), "datePicker");
-            }
-        });
-
-        dataInizio.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean focus) {
-                if (focus && isResumed[0]) {
-                    datePickerFragment[0].show(getFragmentManager(), "datePicker");
-                }
-            }
-        });
-
-        // ci registriamo agli eventi del popup (ok e annulla)
-        datePickerFragment[0].setOnDatePickerFragmentChanged(new DatePickerFragment.DatePickerFragmentListener() {
-            @Override
-            public void onDatePickerFragmentOkButton(DialogFragment dialog, Calendar date) {
-                // trasferiamo il valore sul campo di testo
-                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                dataInizio.setText(format.format(date.getTime()));
-            }
-
-            @Override
-            public void onDatePickerFragmentCancelButton(DialogFragment dialog) {
-                // non facciamo nulla
-            }
-        });
-
-
-        /**time picker data fine*/
-        dataFine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                datePickerFragment[1].show(getFragmentManager(), "datePicker");
-            }
-        });
-
-        dataFine.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean focus) {
-                if (focus && isResumed[1]) {
-                    datePickerFragment[1].show(getFragmentManager(), "datePicker");
-                }
-            }
-        });
-
-        datePickerFragment[1].setOnDatePickerFragmentChanged(new DatePickerFragment.DatePickerFragmentListener() {
-            @Override
-            public void onDatePickerFragmentOkButton(DialogFragment dialog, Calendar date) {
-                // trasferiamo il valore sul campo di testo
-                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                dataFine.setText(format.format(date.getTime()));
-            }
-
-            @Override
-            public void onDatePickerFragmentCancelButton(DialogFragment dialog) {
-                // non facciamo nulla
-            }
-        });
 
 
         oraInizio.setOnClickListener(new View.OnClickListener() {
@@ -326,8 +260,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
         MainActivity.automazione.add(new Programmazione(nome.getText().toString(), stanza.getSelectedItem().toString(),
                 tipo.getSelectedItem().toString(),
-                oraInizio.getText().toString(), oraFine.getText().toString(),
-                dataInizio.getText().toString(), dataFine.getText().toString()));
+                oraInizio.getText().toString(), oraFine.getText().toString()));
 
         //Toast
         Toast.makeText(this, "Nuovo evento " + nomeEvento + " creato!",Toast.LENGTH_LONG).show();
@@ -369,31 +302,6 @@ public class NuovaProgrammazione extends AppCompatActivity {
             errorText.setText("");
         }
 
-        if (dataInizio.getText() == null || dataInizio.getText().toString().length() == 0){
-
-            erroreDI.setVisibility(View.VISIBLE);
-            erroreDI.setText("Non hai inserito la data iniziale");
-
-            condizione = false;
-
-        } else {
-
-            erroreDI.setVisibility(View.GONE);
-            erroreDI.setText("");
-        }
-
-        if (dataFine.getText() == null || dataFine.getText().toString().length() == 0){
-
-            erroreDF.setVisibility(View.VISIBLE);
-            erroreDF.setText("Non hai inserito la data della fine");
-
-            condizione = false;
-
-        } else {
-
-            erroreDF.setVisibility(View.GONE);
-            erroreDF.setText("");
-        }
 
         if (oraInizio.getText() == null || oraInizio.getText().toString().length() == 0){
 
