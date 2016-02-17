@@ -26,6 +26,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -63,6 +64,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        immagini[0].setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(MainActivity.this, "Gestisce l'illuminazione delle varie stanze"
+                        , Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+        });
+
         /**tapparelle*/
         immagini[1].setOnClickListener(new View.OnClickListener(){
 
@@ -70,6 +82,17 @@ public class MainActivity extends AppCompatActivity {
 
                 funzionalitaMancante();
             }
+        });
+
+        immagini[1].setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(MainActivity.this, "Gestisce le tapparelle delle varie stanze"
+                        , Toast.LENGTH_LONG).show();
+                return true;
+            }
+
         });
 
         /**riscaldamento*/
@@ -83,6 +106,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        immagini[2].setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(MainActivity.this, "Gestisce il riscaldamento delle varie stanze"
+                        , Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+        });
+
         /**programmazione*/
         immagini[3].setOnClickListener(new View.OnClickListener(){
 
@@ -94,6 +128,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        immagini[3].setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(MainActivity.this, "Crea o gestisci azioni predefinite e ricorrenti"
+                        , Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+        });
+
         /**nuova stanza**/
         immagini[4].setOnClickListener(new View.OnClickListener(){
 
@@ -103,6 +148,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        immagini[4].setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(MainActivity.this, "Permette operazioni di gestione delle stanze,"
+                        + " tra cui l'aggiunta e la cancellazione", Toast.LENGTH_LONG).show();
+                return true;
+            }
+
+        });
+
         /**impostazioni*/
         immagini[5].setOnClickListener(new View.OnClickListener(){
 
@@ -110,6 +166,17 @@ public class MainActivity extends AppCompatActivity {
 
                 funzionalitaMancante();
             }
+        });
+
+        immagini[5].setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(MainActivity.this, "Mostra le impostazioni generali"
+                        , Toast.LENGTH_LONG).show();
+                return true;
+            }
+
         });
     }
 

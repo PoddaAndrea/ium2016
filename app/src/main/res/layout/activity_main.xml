@@ -24,26 +24,85 @@
             android:layout_marginBottom="10sp"
             >
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
             <ImageView
                 android:id="@+id/immagine1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:src="@mipmap/button_illuminazione"/>
 
-            <ImageView
-                android:id="@+id/immagine2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@mipmap/button_tapparelle"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Illuminazione"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#000000"
 
-            <ImageView
-                android:id="@+id/immagine3"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_weight="1"
-                android:src="@mipmap/button_condizionatore"/>
+                >
+
+                <ImageView
+                    android:id="@+id/immagine2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/button_tapparelle"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tapparelle"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#000000"
+                    />
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <ImageView
+                    android:id="@+id/immagine3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/button_condizionatore"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Riscaldamento"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#000000"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -54,26 +113,87 @@
             android:layout_marginTop="10dp"
             >
 
-            <ImageView
-                android:id="@+id/immagine4"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_weight="1"
-                android:src="@mipmap/button_programmazione"/>
+                >
 
-            <ImageView
-                android:id="@+id/immagine5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@mipmap/button_stanze"/>
+                <ImageView
+                    android:id="@+id/immagine4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/button_programmazione"/>
 
-            <ImageView
-                android:id="@+id/immagine6"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Programma\nazione"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#000000"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_weight="1"
-                android:src="@mipmap/button_impostazioni"/>
+                >
+
+                <ImageView
+                    android:id="@+id/immagine5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/button_stanze"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gestione\nstanze"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#000000"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <ImageView
+                    android:id="@+id/immagine6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/button_impostazioni"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Impostazioni"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#000000"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 
