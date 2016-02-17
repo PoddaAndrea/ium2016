@@ -1,6 +1,7 @@
 package ium.dycklanguage.domotric.classi;
 
 
+import java.util.ArrayList;
 
 public class Programmazione {
 
@@ -13,9 +14,28 @@ public class Programmazione {
     private String giornoFine;
     private boolean attivato;
     private int percentuale;
+    public ArrayList<String> stanze = new ArrayList<>();
 
     public Programmazione(){
 
+    }
+
+    public Programmazione(String nome, String oi, String of ){
+
+        this.setNome(nome);
+        this.setOraInizio(oi);
+        this.setOraFile(of);
+
+        this.setAttivato(true);
+    }
+
+    public Programmazione(String nome, ArrayList<String> stanze , String oi, String of ){
+
+        this.setNome(nome);
+        this.setOraInizio(oi);
+        this.setOraFile(of);
+        this.stanze = stanze;
+        this.setAttivato(true);
     }
 
     public Programmazione(String nome, String nomeS, String tipo, String oi, String of ){
@@ -100,5 +120,13 @@ public class Programmazione {
 
     public void setPercentuale(int percentuale) {
         this.percentuale = percentuale;
+    }
+
+    public ArrayList<String> getStanze() {
+        return stanze;
+    }
+
+    public void setStanze(ArrayList<String> stanze) {
+        this.stanze = stanze;
     }
 }

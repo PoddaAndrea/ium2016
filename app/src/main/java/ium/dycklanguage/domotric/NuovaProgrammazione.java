@@ -330,9 +330,12 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
         String nomeEvento = nome.getText().toString();
 
-        MainActivity.automazione.add(new Programmazione(nome.getText().toString(), "asd",
-                "tipo",
+        //TODO selezione stanza su arraylist
+
+        MainActivity.automazione.add(new Programmazione(nome.getText().toString(),
                 oraInizio.getText().toString(), oraFine.getText().toString()));
+
+
 
         //Toast
         Toast.makeText(this, "Nuovo evento " + nomeEvento + " creato!",Toast.LENGTH_LONG).show();
