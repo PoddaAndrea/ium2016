@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ public class Gestione extends AppCompatActivity {
     static Switch[] bottone = new Switch[3];
     static String selezione;
     View[] zona = new View[3];
+    ImageView[] freccia = new ImageView[3];
 
     Integer valore;
 
@@ -47,6 +49,7 @@ public class Gestione extends AppCompatActivity {
 
         valore = MainActivity.stanza.get(2).getPercentualeRiscaldamento();
 
+        freccia[2] = (ImageView) findViewById(R.id.arrow3);
 
         statoStanza[0].setText("Non azionato");
         statoStanza[1].setText("Non azionato");
@@ -127,6 +130,16 @@ public class Gestione extends AppCompatActivity {
 
 
         zona[2].setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+
+                Intent activity = new Intent(getBaseContext(), Riscaldamento.class);
+                //avvia la finestra corrispondente
+                startActivity(activity);
+            }
+        });
+
+        freccia[2].setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
 

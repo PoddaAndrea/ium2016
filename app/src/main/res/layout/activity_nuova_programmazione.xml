@@ -55,14 +55,41 @@
                 android:layout_marginTop="10dp"
                 />
 
-            <Spinner
-                android:id="@+id/stanzaNP"
+            <CheckedTextView
+                android:id="@+id/checkedTextViewCucina"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollHorizontally="false"
-                android:singleLine="true"
-                android:layout_marginBottom="10dp"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checked="true"
+                android:text="Cucina"
+                android:textSize="18dp"
                 android:layout_marginTop="10dp"
+                />
+
+            <CheckedTextView
+                android:id="@+id/checkedTextViewSalone"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checked="true"
+                android:text="Salone"
+                android:textSize="18dp"
+                />
+
+            <CheckedTextView
+                android:id="@+id/checkedTextViewCamera"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checked="true"
+                android:text="Camera"
+                android:textSize="18dp"
                 />
 
             <TextView
@@ -72,38 +99,121 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/tipologiaNP"
+            <CheckedTextView
+                android:id="@+id/checkedTextViewLuce"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollHorizontally="false"
-                android:singleLine="true"
-                android:layout_marginBottom="10dp"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checked="true"
+                android:text="Luce"
+                android:textSize="18dp"
                 android:layout_marginTop="10dp"
                 />
 
+            <LinearLayout
+                android:id="@+id/opzioneLuce"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:text="Luce"
+                    android:layout_marginRight="100dp"
+                    />
+
+                <Switch
+                    android:id="@+id/switchLuce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    />
+
+
+            </LinearLayout>
+
+            <CheckedTextView
+                android:id="@+id/checkedTextViewTapparelle"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checked="true"
+                android:text="Tapparelle"
+                android:textSize="18dp"
+                />
+
         <LinearLayout
+            android:id="@+id/opzioneTapparelle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginBottom="10dp">
 
             <TextView
-                android:id="@+id/nomeRegolazione"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:textStyle="bold"
+                android:gravity="center"
+                android:text="Tapparelle"
+                android:layout_marginRight="50dp"
+                />
+
+            <Switch
+                android:id="@+id/switchTapparelle3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 />
 
+
+            </LinearLayout>
+
+            <CheckedTextView
+                android:id="@+id/checkedTextViewRiscaldamento"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                android:checked="true"
+                android:text="Riscaldamento"
+                android:textSize="18dp"
+                />
+
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/opzioneRiscaldamento"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="10dp">
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/nomeRegolazione"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:text="Gradi riscaldamento"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp">
 
 
                 <ImageView

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -27,18 +28,19 @@ import ium.dycklanguage.domotric.classi.Programmazione;
 public class NuovaProgrammazione extends AppCompatActivity {
 
     EditText oraInizio, oraFine, nome;
-    Spinner stanza, tipo;
     DatePickerFragment[] datePickerFragment = new DatePickerFragment[2];
     TextView errorText,  erroreOI, erroreOF;
     static TextView regolazioneParametro, valoreParametro;
     //CheckedTextView tuttoIlGiorno;
-    Integer min = 1, max = 5, valore = 3;
+    Integer min = 0, max = 40, valore = 20;
     ImageView meno, piu;
 
     String scelta;
     String[] stanze = new String[3];
     boolean[] isResumed = new boolean[4];
     Button conferma;
+    CheckedTextView riscaldamentoC, luceC, tapparelleC, cucinaC, cameraC, saloneC;
+    View riscaldamentoV, luceV, tapparelleV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +55,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
         datePickerFragment[1] = new DatePickerFragment();
 
         nome = (EditText) findViewById(R.id.nomeNP);
-        stanza = (Spinner) findViewById(R.id.stanzaNP);
-        tipo = (Spinner) findViewById(R.id.tipologiaNP);
+
         errorText = (TextView) findViewById(R.id.errorText);
 
         erroreOI = (TextView) findViewById(R.id.errorTextOI);
@@ -65,9 +66,32 @@ public class NuovaProgrammazione extends AppCompatActivity {
         meno = (ImageView) findViewById(R.id.menoNP);
         piu = (ImageView) findViewById(R.id.piuNP);
 
-        regolazioneParametro.setText("Intensità luce");
-        valoreParametro.setText(valore.toString());
+        //regolazioneParametro.setText("Intensità luce");
+        valoreParametro.setText(valore.toString() +"°C");
 
+        riscaldamentoC = (CheckedTextView) findViewById(R.id.checkedTextViewRiscaldamento);
+        tapparelleC = (CheckedTextView) findViewById(R.id.checkedTextViewTapparelle);
+        luceC = (CheckedTextView) findViewById(R.id.checkedTextViewLuce);
+        cucinaC = (CheckedTextView) findViewById(R.id.checkedTextViewCucina);
+        cameraC = (CheckedTextView) findViewById(R.id.checkedTextViewCamera);
+        saloneC = (CheckedTextView) findViewById(R.id.checkedTextViewSalone);
+
+
+        luceC.setChecked(false);
+        tapparelleC.setChecked(false);
+        riscaldamentoC.setChecked(false);
+
+        cameraC.setChecked(false);
+        cucinaC.setChecked(false);
+        saloneC.setChecked(false);
+
+        luceV = findViewById(R.id.opzioneLuce);
+        tapparelleV = findViewById(R.id.opzioneTapparelle);
+        riscaldamentoV = findViewById(R.id.opzioneRiscaldamento);
+
+        luceV.setVisibility(View.GONE);
+        tapparelleV.setVisibility(View.GONE);
+        riscaldamentoV.setVisibility(View.GONE);
 
         oraInizio = (EditText) findViewById(R.id.oraINP);
         oraFine = (EditText) findViewById(R.id.oraFNP);
@@ -90,7 +114,6 @@ public class NuovaProgrammazione extends AppCompatActivity {
         list.add("Tutta la casa");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        stanza.setAdapter(dataAdapter);
 
 
         List<String> list1 = new ArrayList<>();
@@ -99,41 +122,90 @@ public class NuovaProgrammazione extends AppCompatActivity {
         list1.add("Riscaldamento");
         ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list1);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        tipo.setAdapter(dataAdapter1);
 
-        tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        cucinaC.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+            public void onClick(View v) {
 
-                switch (position) {
-                    case 0:
-                        NuovaProgrammazione.regolazioneParametro.setText("Intensità luce");
-                        min = 1;
-                        valore = 3;
-                        max = 5;
-                        valoreParametro.setText(valore.toString());
-                        break;
-                    case 1:
-                        NuovaProgrammazione.regolazioneParametro.setText("Altezza tapparelle");
-                        max = 10;
-                        valore = 5;
-                        min = 0;
-                        valoreParametro.setText(valore.toString());
-                        break;
-                    case 2:
-                        NuovaProgrammazione.regolazioneParametro.setText("Gradi riscaldamento");
-                        max = 40;
-                        valore = 22;
-                        valoreParametro.setText(valore.toString());
-                        break;
+                if (cucinaC.isChecked() == false) {
+                    cucinaC.setChecked(true);
+                } else {
+                    cucinaC.setChecked(false);
+
                 }
             }
+        });
 
+        saloneC.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
+            public void onClick(View v) {
 
+                if (saloneC.isChecked() == false) {
+                    saloneC.setChecked(true);
+                } else {
+                    saloneC.setChecked(false);
+
+                }
+            }
+        });
+
+        cameraC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (cameraC.isChecked() == false) {
+                    cameraC.setChecked(true);
+                } else {
+                    cameraC.setChecked(false);
+
+                }
+            }
+        });
+
+        tapparelleC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (tapparelleC.isChecked() == false) {
+                    tapparelleC.setChecked(true);
+                    tapparelleV.setVisibility(View.VISIBLE);
+                } else {
+                    tapparelleC.setChecked(false);
+                    tapparelleV.setVisibility(View.GONE);
+
+                }
+            }
+        });
+
+        luceC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (luceC.isChecked() == false){
+                    luceC.setChecked(true);
+                    luceV.setVisibility(View.VISIBLE);
+                }
+                else{
+                    luceC.setChecked(false);
+                    luceV.setVisibility(View.GONE);
+
+                }
+            }
+        });
+
+        riscaldamentoC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (riscaldamentoC.isChecked() == false) {
+                    riscaldamentoC.setChecked(true);
+                    riscaldamentoV.setVisibility(View.VISIBLE);
+                } else {
+                    riscaldamentoC.setChecked(false);
+                    riscaldamentoV.setVisibility(View.GONE);
+
+                }
+            }
         });
 
         meno.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +213,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
             public void onClick(View view) {
                 if (valore > min)
                     valore--;
-                valoreParametro.setText(valore.toString());
+                valoreParametro.setText(valore.toString() +"°C");
 
             }
         });
@@ -151,7 +223,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
             public void onClick(View view) {
                 if (valore < max)
                     valore++;
-                valoreParametro.setText(valore.toString());
+                valoreParametro.setText(valore.toString() +"°C");
 
             }
         });
@@ -258,8 +330,8 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
         String nomeEvento = nome.getText().toString();
 
-        MainActivity.automazione.add(new Programmazione(nome.getText().toString(), stanza.getSelectedItem().toString(),
-                tipo.getSelectedItem().toString(),
+        MainActivity.automazione.add(new Programmazione(nome.getText().toString(), "asd",
+                "tipo",
                 oraInizio.getText().toString(), oraFine.getText().toString()));
 
         //Toast
