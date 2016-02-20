@@ -269,13 +269,20 @@ public class NuovaProgrammazione extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calendar mcurrentTime = Calendar.getInstance();
+
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
+
+
                 mTimePicker = new TimePickerDialog(NuovaProgrammazione.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        oraInizio.setText("" + selectedHour + ":" + selectedMinute);
+                        String zeroAggiuntivo ="";
+
+                        if (selectedMinute < 10)
+                            zeroAggiuntivo = "0";
+                        oraInizio.setText("" + selectedHour + ":" + zeroAggiuntivo + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Seleziona l'ora di inizio");
@@ -289,13 +296,20 @@ public class NuovaProgrammazione extends AppCompatActivity {
             public void onFocusChange(View view, boolean focus) {
                 if (focus && isResumed[1]) {
                     Calendar mcurrentTime = Calendar.getInstance();
+
                     int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                     int minute = mcurrentTime.get(Calendar.MINUTE);
                     TimePickerDialog mTimePicker;
+
+
                     mTimePicker = new TimePickerDialog(NuovaProgrammazione.this, new TimePickerDialog.OnTimeSetListener() {
                         @Override
                         public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                            oraInizio.setText("" + selectedHour + ":" + selectedMinute);
+                            String zeroAggiuntivo ="";
+
+                            if (selectedMinute < 10)
+                                zeroAggiuntivo = "0";
+                            oraInizio.setText("" + selectedHour + ":" + zeroAggiuntivo + selectedMinute);
                         }
                     }, hour, minute, true);//Yes 24 hour time
                     mTimePicker.setTitle("Seleziona l'ora di inizio");
@@ -312,10 +326,15 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
+
                 mTimePicker = new TimePickerDialog(NuovaProgrammazione.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        oraInizio.setText("" + selectedHour + ":" + selectedMinute);
+                        String zeroAggiuntivo ="";
+
+                        if (selectedMinute < 10)
+                            zeroAggiuntivo = "0";
+                        oraInizio.setText("" + selectedHour + ":" + zeroAggiuntivo + selectedMinute);
                     }
                 }, hour, minute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Seleziona l'ora di fine");
@@ -331,14 +350,20 @@ public class NuovaProgrammazione extends AppCompatActivity {
                     Calendar mcurrentTime = Calendar.getInstance();
                     int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                     int minute = mcurrentTime.get(Calendar.MINUTE);
+
+
                     TimePickerDialog mTimePicker;
                     mTimePicker = new TimePickerDialog(NuovaProgrammazione.this, new TimePickerDialog.OnTimeSetListener() {
                         @Override
                         public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                            oraFine.setText("" + selectedHour + ":" + selectedMinute);
+                            String zeroAggiuntivo ="";
+
+                            if (selectedMinute < 10)
+                                zeroAggiuntivo = "0";
+                            oraFine.setText("" + selectedHour + ":" + zeroAggiuntivo + selectedMinute);
                         }
                     }, hour, minute, true);//Yes 24 hour time
-                    mTimePicker.setTitle("Seleziona l'ora di inizio");
+                    mTimePicker.setTitle("Seleziona l'ora di fine");
                     mTimePicker.show();
                 }
             }

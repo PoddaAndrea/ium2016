@@ -24,7 +24,7 @@ public class Programmazione extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_programmazione);
 
-        this.setTitle("Azioni programmate");
+        this.setTitle("Gestione programmazioni");
 
         avviaTutte = (Switch) findViewById(R.id.abilitaAzioni);
         addButton = (ImageView) findViewById(R.id.addButtonP);
