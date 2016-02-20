@@ -43,6 +43,8 @@ public class Programmazione extends AppCompatActivity {
                         avviaTutte.setChecked(true);
                         Toast.makeText(Programmazione.this, "Avviate tutte le azioni programmate", Toast.LENGTH_LONG).show();
 
+
+
                     } else {
 
                         avviaTutte.setChecked(false);

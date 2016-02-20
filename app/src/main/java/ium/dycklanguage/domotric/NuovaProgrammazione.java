@@ -10,9 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -34,7 +36,8 @@ public class NuovaProgrammazione extends AppCompatActivity {
     //CheckedTextView tuttoIlGiorno;
     Integer min = 0, max = 40, valore = 20;
     ImageView meno, piu;
-
+    Switch luceS, tapparelleS;
+    TextView luceT, tapparelleT;
     String scelta;
     String[] stanze = new String[3];
     boolean[] isResumed = new boolean[4];
@@ -67,6 +70,9 @@ public class NuovaProgrammazione extends AppCompatActivity {
         regolazioneParametro = (TextView) findViewById(R.id.nomeRegolazione);
         valoreParametro = (TextView) findViewById(R.id.valoreP);
 
+        luceT = (TextView) findViewById(R.id.luceTX);
+        tapparelleT = (TextView) findViewById(R.id.tapTX);
+
         meno = (ImageView) findViewById(R.id.menoNP);
         piu = (ImageView) findViewById(R.id.piuNP);
 
@@ -96,6 +102,9 @@ public class NuovaProgrammazione extends AppCompatActivity {
         cameraC.setChecked(false);
         cucinaC.setChecked(false);
         saloneC.setChecked(false);
+
+        tapparelleS = (Switch) findViewById(R.id.switchTapparelle3);
+        luceS = (Switch) findViewById(R.id.switchLuce);
 
         luceV = findViewById(R.id.opzioneLuce);
         tapparelleV = findViewById(R.id.opzioneTapparelle);
@@ -178,6 +187,10 @@ public class NuovaProgrammazione extends AppCompatActivity {
             }
         });
 
+        tlahes[0] = "not";
+        tlahes[1] = "not";
+        tlahes[2] = "not";
+
         tapparelleC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,9 +202,27 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 } else {
                     tapparelleC.setChecked(false);
                     tapparelleV.setVisibility(View.GONE);
-                    tlahes[2] = null;
+                    tlahes[2] = "not";
 
                 }
+            }
+        });
+
+        tapparelleS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+
+                    tapparelleS.setChecked(true);
+                    tapparelleT.setText("Tapparelle aperte");
+
+                } else {
+
+                    tapparelleS.setChecked(false);
+                    tapparelleT.setText("Tapparelle chiuse");
+
+                }
+
             }
         });
 
@@ -207,9 +238,27 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 else{
                     luceC.setChecked(false);
                     luceV.setVisibility(View.GONE);
-                    tlahes[0] = null;
+                    tlahes[0] = "not";
 
                 }
+            }
+        });
+
+        luceS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+
+                    luceS.setChecked(true);
+                    luceT.setText("Luce accesa");
+
+                } else {
+
+                    luceS.setChecked(false);
+                    luceT.setText("Luce spenta");
+
+                }
+
             }
         });
 
@@ -224,7 +273,7 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 } else {
                     riscaldamentoC.setChecked(false);
                     riscaldamentoV.setVisibility(View.GONE);
-                    tlahes[1] = null;
+                    tlahes[1] = "not";
 
                 }
             }
@@ -377,8 +426,9 @@ public class NuovaProgrammazione extends AppCompatActivity {
                     if (flahes[i] != null)
                         stanzeScelte.add(flahes[i]);
 
-                    if (tlahes[i] != null)
+                    if (tlahes[i] != "not")
                         tipoScelto.add(tlahes[i]);
+
                 }
 
                 if(checkError())

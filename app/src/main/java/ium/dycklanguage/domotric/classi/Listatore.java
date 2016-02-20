@@ -22,6 +22,7 @@ public class Listatore extends ArrayAdapter<Programmazione> {
     private Activity context;
     private ArrayList<Programmazione> pr;
     int positions;
+    public Switch attiva;
 
     public Listatore(Activity context, ArrayList<Programmazione> pr) {
 
@@ -44,7 +45,8 @@ public class Listatore extends ArrayAdapter<Programmazione> {
         TextView txtTitle = (TextView) rowView.findViewById(R.id.nomeAzione);
         TextView stanza = (TextView) rowView.findViewById(R.id.stanzaProgr);
         TextView dataEora = (TextView) rowView.findViewById(R.id.nomeParametro);
-        final Switch attiva = (Switch) rowView.findViewById(R.id.abilitaAzione);
+
+        attiva = (Switch) rowView.findViewById(R.id.abilitaAzione);
 
         txtTitle.setText(pr.get(position).getNome());
         stanza.setText(TextUtils.join(", ", pr.get(position).stanze));
