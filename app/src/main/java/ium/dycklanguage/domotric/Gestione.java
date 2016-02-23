@@ -41,6 +41,8 @@ public class Gestione extends AppCompatActivity {
         bottone[1] = (Switch) findViewById(R.id.switch2);
         bottone[2] = (Switch) findViewById(R.id.switch3);
 
+        zona[0] = findViewById(R.id.id1);
+        zona[1] = findViewById(R.id.id2);
         zona[2] = findViewById(R.id.id3);
 
         nomeStanza[0].setText(MainActivity.stanza.get(0).getNome());
@@ -49,11 +51,32 @@ public class Gestione extends AppCompatActivity {
 
         valore = MainActivity.stanza.get(2).getPercentualeRiscaldamento();
 
+        freccia[0] = (ImageView) findViewById(R.id.arrow1);
+        freccia[1] = (ImageView) findViewById(R.id.arrow2);
+
         freccia[2] = (ImageView) findViewById(R.id.arrow3);
 
         statoStanza[0].setText("Non azionato");
         statoStanza[1].setText("Non azionato");
         statoStanza[2].setText("Attivato\t " + valore.toString() + "°C");
+
+        if (MainActivity.stanza.get(0).isRiscaldamento()) {
+            bottone[0].setChecked(true);
+            statoStanza[0].setText("Attivato\t " + MainActivity.stanza.get(0).getPercentualeRiscaldamento() + "°C");
+        }
+        else {
+            bottone[2].setChecked(false);
+            statoStanza[0].setText("Non azionato");
+        }
+
+        if (MainActivity.stanza.get(1).isRiscaldamento()) {
+            bottone[1].setChecked(true);
+            statoStanza[1].setText("Attivato\t " + MainActivity.stanza.get(1).getPercentualeRiscaldamento() + "°C");
+        }
+        else {
+            bottone[1].setChecked(false);
+            statoStanza[1].setText("Non azionato");
+        }
 
         if (MainActivity.stanza.get(2).isRiscaldamento()) {
             bottone[2].setChecked(true);
@@ -72,14 +95,14 @@ public class Gestione extends AppCompatActivity {
                     bottone[0].setChecked(true);
                     Toast.makeText(Gestione.this, "Riscaldamento attivato in Cucina", Toast.LENGTH_LONG).show();
                     statoStanza[0].setText("Attivato\t 22°C");
-
+                    MainActivity.stanza.get(0).setRiscaldamento(true);
 
                 } else {
 
                     bottone[0].setChecked(false);
                     Toast.makeText(Gestione.this, "Riscaldamento disattivato in Cucina", Toast.LENGTH_LONG).show();
                     statoStanza[0].setText("Non azionato");
-
+                    MainActivity.stanza.get(0).setRiscaldamento(false);
 
                 }
 
@@ -94,13 +117,14 @@ public class Gestione extends AppCompatActivity {
                     bottone[1].setChecked(true);
                     Toast.makeText(Gestione.this, "Riscaldamento attivato in Salone", Toast.LENGTH_LONG).show();
                     statoStanza[1].setText("Attivato\t 25°C");
+                    MainActivity.stanza.get(1).setRiscaldamento(true);
 
                 } else {
 
                     bottone[1].setChecked(false);
                     Toast.makeText(Gestione.this, "Riscaldamento disattivato in Salone", Toast.LENGTH_LONG).show();
                     statoStanza[1].setText("Non azionato");
-
+                    MainActivity.stanza.get(1).setRiscaldamento(false);
                 }
 
             }
@@ -128,10 +152,63 @@ public class Gestione extends AppCompatActivity {
             }
         });
 
+        zona[0].setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+
+                Riscaldamento.stanza = MainActivity.stanza.get(0);
+                Riscaldamento.posizioneScelta = 0;
+
+                Intent activity = new Intent(getBaseContext(), Riscaldamento.class);
+                //avvia la finestra corrispondente
+                startActivity(activity);
+            }
+        });
+
+        zona[1].setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+
+                Riscaldamento.stanza = MainActivity.stanza.get(1);
+                Riscaldamento.posizioneScelta = 1;
+
+                Intent activity = new Intent(getBaseContext(), Riscaldamento.class);
+                //avvia la finestra corrispondente
+                startActivity(activity);
+            }
+        });
 
         zona[2].setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
+
+                Riscaldamento.stanza = MainActivity.stanza.get(2);
+
+                Riscaldamento.posizioneScelta = 2;
+
+                Intent activity = new Intent(getBaseContext(), Riscaldamento.class);
+                //avvia la finestra corrispondente
+                startActivity(activity);
+            }
+        });
+
+        freccia[0].setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+
+                Riscaldamento.stanza = MainActivity.stanza.get(0);
+
+                Intent activity = new Intent(getBaseContext(), Riscaldamento.class);
+                //avvia la finestra corrispondente
+                startActivity(activity);
+            }
+        });
+
+        freccia[1].setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+
+                Riscaldamento.stanza = MainActivity.stanza.get(1);
 
                 Intent activity = new Intent(getBaseContext(), Riscaldamento.class);
                 //avvia la finestra corrispondente
@@ -142,6 +219,8 @@ public class Gestione extends AppCompatActivity {
         freccia[2].setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
+
+                Riscaldamento.stanza = MainActivity.stanza.get(2);
 
                 Intent activity = new Intent(getBaseContext(), Riscaldamento.class);
                 //avvia la finestra corrispondente

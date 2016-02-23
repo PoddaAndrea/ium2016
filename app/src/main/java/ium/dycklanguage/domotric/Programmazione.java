@@ -30,7 +30,7 @@ public class Programmazione extends AppCompatActivity {
         addButton = (ImageView) findViewById(R.id.addButtonP);
 
 
-        list1 = (ListView)this.findViewById(R.id.azioneProgrammateLista);
+        list1 = (ListView) findViewById(R.id.azioneProgrammateLista);
         adapter = new Listatore(Programmazione.this, MainActivity.automazione);
         list1.setAdapter(adapter);
 
@@ -42,7 +42,6 @@ public class Programmazione extends AppCompatActivity {
 
                         avviaTutte.setChecked(true);
                         Toast.makeText(Programmazione.this, "Avviate tutte le azioni programmate", Toast.LENGTH_LONG).show();
-
 
 
                     } else {

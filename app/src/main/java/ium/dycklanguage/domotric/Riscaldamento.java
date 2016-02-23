@@ -8,13 +8,18 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ium.dycklanguage.domotric.classi.Stanza;
+
 public class Riscaldamento extends AppCompatActivity {
 
     ImageView piu, meno, icona;
-    TextView gradi;
+    TextView gradi, titolo;
     final Integer min = 0, max = 40;
     Integer valore;
     boolean acceso;
+
+    static Stanza stanza;
+    static int posizioneScelta;
 
     SeekBar slider;
 
@@ -25,16 +30,22 @@ public class Riscaldamento extends AppCompatActivity {
 
         this.setTitle("Imposta riscaldamento");
 
-        acceso = MainActivity.stanza.get(2).isRiscaldamento();
+
+
+        acceso = stanza.isRiscaldamento();
 
         slider = (SeekBar) findViewById(R.id.seekbarra);
+
+        titolo = (TextView) findViewById(R.id.titoloRiscaldamento);
+
+        titolo.setText("Riscaldamento " + stanza.getNome());
 
         piu = (ImageView) findViewById(R.id.piuR);
         meno = (ImageView) findViewById(R.id.menoR);
         icona = (ImageView) findViewById(R.id.feedbackRiscaldamento);
         gradi = (TextView) findViewById(R.id.valoreR);
 
-        valore = MainActivity.stanza.get(2).getPercentualeRiscaldamento();
+        valore = stanza.getPercentualeRiscaldamento();
 
         gradi.setText(valore.toString());
 
@@ -66,14 +77,14 @@ public class Riscaldamento extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (MainActivity.stanza.get(2).isRiscaldamento()){
+                if (MainActivity.stanza.get(posizioneScelta).isRiscaldamento()){
 
                     icona.setImageResource(R.mipmap.logo_condizionatore);
-                    MainActivity.stanza.get(2).setRiscaldamento(false);
+                    MainActivity.stanza.get(posizioneScelta).setRiscaldamento(false);
                     Toast.makeText(Riscaldamento.this,
                             "Hai spento il riscaldamento in Camera", Toast.LENGTH_LONG).show();
                 } else {
-                    MainActivity.stanza.get(2).setRiscaldamento(true);
+                    MainActivity.stanza.get(posizioneScelta).setRiscaldamento(true);
                     updatePic();
                     Toast.makeText(Riscaldamento.this,
                             "Hai acceso il riscaldamento in Camera a " + valore.toString() +
@@ -91,7 +102,7 @@ public class Riscaldamento extends AppCompatActivity {
 
                 updatePic();
 
-                MainActivity.stanza.get(2).setPercentualeRiscaldamento(valore);
+                MainActivity.stanza.get(posizioneScelta).setPercentualeRiscaldamento(valore);
 
             }
         });
@@ -106,7 +117,7 @@ public class Riscaldamento extends AppCompatActivity {
 
                 updatePic();
 
-                MainActivity.stanza.get(2).setPercentualeRiscaldamento(valore);
+                MainActivity.stanza.get(posizioneScelta).setPercentualeRiscaldamento(valore);
 
             }
         });
@@ -131,7 +142,7 @@ public class Riscaldamento extends AppCompatActivity {
 
     public void updatePic(){
 
-        if(!MainActivity.stanza.get(2).isRiscaldamento())
+        if(!stanza.isRiscaldamento())
             icona.setImageResource(R.mipmap.logo_condizionatore);
 
         else {

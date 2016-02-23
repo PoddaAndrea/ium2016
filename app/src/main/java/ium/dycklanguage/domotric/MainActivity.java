@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         immagini[4] = (ImageView) findViewById(R.id.immagine5);
         immagini[5] = (ImageView) findViewById(R.id.immagine6);
 
-        stanza.add(new Stanza("Cucina", true, false, false, 5, 0, 0, true));
-        stanza.add(new Stanza("Salone", false, false, false, 0, 0, 0, false));
+        stanza.add(new Stanza("Cucina", true, false, false, 5, 22, 0, true));
+        stanza.add(new Stanza("Salone", false, false, false, 0, 25, 0, false));
         stanza.add(new Stanza("Camera", false, true, false, 0, 25, 0, false));
 
         /**gestione luci*/
