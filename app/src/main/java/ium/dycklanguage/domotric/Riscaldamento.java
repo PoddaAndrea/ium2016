@@ -82,12 +82,12 @@ public class Riscaldamento extends AppCompatActivity {
                     icona.setImageResource(R.mipmap.logo_condizionatore);
                     MainActivity.stanza.get(posizioneScelta).setRiscaldamento(false);
                     Toast.makeText(Riscaldamento.this,
-                            "Hai spento il riscaldamento in Camera", Toast.LENGTH_LONG).show();
+                            "Hai spento il riscaldamento in " + stanza.getNome() , Toast.LENGTH_LONG).show();
                 } else {
                     MainActivity.stanza.get(posizioneScelta).setRiscaldamento(true);
                     updatePic();
                     Toast.makeText(Riscaldamento.this,
-                            "Hai acceso il riscaldamento in Camera a " + valore.toString() +
+                            "Hai acceso il riscaldamento in " + stanza.getNome() + " a " + valore.toString() +
                                     "°C", Toast.LENGTH_LONG).show();
                 }
             }
@@ -136,16 +136,22 @@ public class Riscaldamento extends AppCompatActivity {
             this.slider.setProgress(valore - min);
         }
 
+        MainActivity.stanza.get(posizioneScelta).setPercentualeRiscaldamento(valore);
+
         updatePic();
 
     }
 
     public void updatePic(){
 
-        if(!stanza.isRiscaldamento())
+        if(!stanza.isRiscaldamento()) {
             icona.setImageResource(R.mipmap.logo_condizionatore);
 
+            MainActivity.stanza.get(posizioneScelta).setRiscaldamento(false);
+        }
         else {
+
+            MainActivity.stanza.get(posizioneScelta).setRiscaldamento(true);
 
             if(valore >= 1)
                 meno.setImageResource(R.mipmap.button_meno);
