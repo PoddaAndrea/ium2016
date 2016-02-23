@@ -106,6 +106,11 @@ public class NuovaProgrammazione extends AppCompatActivity {
         tapparelleS = (Switch) findViewById(R.id.switchTapparelle3);
         luceS = (Switch) findViewById(R.id.switchLuce);
 
+        luceS.setChecked(true);
+        tapparelleS.setChecked(true);
+        tapparelleT.setText("Tapparelle aperte");
+        luceT.setText("Luce accesa");
+
         luceV = findViewById(R.id.opzioneLuce);
         tapparelleV = findViewById(R.id.opzioneTapparelle);
         riscaldamentoV = findViewById(R.id.opzioneRiscaldamento);

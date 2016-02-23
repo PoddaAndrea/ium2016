@@ -197,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        builder.setCancelable(true);
         builder.show();
 
     }
