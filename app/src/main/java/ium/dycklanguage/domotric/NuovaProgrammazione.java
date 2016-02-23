@@ -36,14 +36,14 @@ public class NuovaProgrammazione extends AppCompatActivity {
     //CheckedTextView tuttoIlGiorno;
     Integer min = 0, max = 40, valore = 20;
     ImageView meno, piu;
-    Switch luceS, tapparelleS;
-    TextView luceT, tapparelleT;
+    Switch luceS, tapparelleS, riscaldamentoS;
+    TextView luceT, tapparelleT, riscaldamentoT;
     String scelta;
     String[] stanze = new String[3];
     boolean[] isResumed = new boolean[4];
     Button conferma;
     CheckedTextView riscaldamentoC, luceC, tapparelleC, cucinaC, cameraC, saloneC;
-    View riscaldamentoV, luceV, tapparelleV;
+    View riscaldamentoV, luceV, tapparelleV, riscaldamentoO;
     String[] flahes = new String[3];
     ArrayList<String> stanzeScelte = new ArrayList<>();
     String[] tlahes = new String[3];
@@ -79,6 +79,9 @@ public class NuovaProgrammazione extends AppCompatActivity {
         //regolazioneParametro.setText("Intensità luce");
         valoreParametro.setText(valore.toString() +"°C");
 
+        riscaldamentoO = findViewById(R.id.accensioneRiscaldamento);
+        riscaldamentoO.setVisibility(View.GONE);
+
         riscaldamentoC = (CheckedTextView) findViewById(R.id.checkedTextViewRiscaldamento);
         tapparelleC = (CheckedTextView) findViewById(R.id.checkedTextViewTapparelle);
         luceC = (CheckedTextView) findViewById(R.id.checkedTextViewLuce);
@@ -105,15 +108,21 @@ public class NuovaProgrammazione extends AppCompatActivity {
 
         tapparelleS = (Switch) findViewById(R.id.switchTapparelle3);
         luceS = (Switch) findViewById(R.id.switchLuce);
+        riscaldamentoS = (Switch) findViewById(R.id.switchRiscaldamento3);
+        riscaldamentoT = (TextView) findViewById(R.id.tapRX);
 
         luceS.setChecked(true);
         tapparelleS.setChecked(true);
+        riscaldamentoS.setChecked(true);
         tapparelleT.setText("Tapparelle aperte");
         luceT.setText("Luce accesa");
+        riscaldamentoT.setText("Riscaldamento acceso");
 
         luceV = findViewById(R.id.opzioneLuce);
         tapparelleV = findViewById(R.id.opzioneTapparelle);
-        riscaldamentoV = findViewById(R.id.opzioneRiscaldamento);
+        riscaldamentoV = findViewById(R.id.sparisciEzitto);
+
+        regolazioneParametro.setVisibility(View.GONE);
 
         luceV.setVisibility(View.GONE);
         tapparelleV.setVisibility(View.GONE);
@@ -231,6 +240,30 @@ public class NuovaProgrammazione extends AppCompatActivity {
             }
         });
 
+        riscaldamentoS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+
+                    riscaldamentoS.setChecked(true);
+                    riscaldamentoT.setText("Riscaldamento acceso");
+
+                    riscaldamentoV.setVisibility(View.VISIBLE);
+                    regolazioneParametro.setVisibility(View.VISIBLE);
+
+
+                } else {
+
+                    riscaldamentoS.setChecked(false);
+                    riscaldamentoT.setText("Riscaldamento spento");
+                    riscaldamentoV.setVisibility(View.GONE);
+                    regolazioneParametro.setVisibility(View.GONE);
+
+                }
+
+            }
+        });
+
         luceC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -274,10 +307,16 @@ public class NuovaProgrammazione extends AppCompatActivity {
                 if (riscaldamentoC.isChecked() == false) {
                     riscaldamentoC.setChecked(true);
                     riscaldamentoV.setVisibility(View.VISIBLE);
+                    riscaldamentoO.setVisibility(View.VISIBLE);
+                    regolazioneParametro.setVisibility(View.VISIBLE);
+
                     tlahes[1] = "Riscaldamento";
                 } else {
                     riscaldamentoC.setChecked(false);
                     riscaldamentoV.setVisibility(View.GONE);
+                    riscaldamentoO.setVisibility(View.GONE);
+                    regolazioneParametro.setVisibility(View.GONE);
+
                     tlahes[1] = "not";
 
                 }

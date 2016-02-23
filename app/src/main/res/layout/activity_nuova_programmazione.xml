@@ -211,6 +211,34 @@
                 android:gravity="center"
                 android:layout_marginBottom="10dp">
 
+                <LinearLayout
+                    android:id="@+id/accensioneRiscaldamento"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/tapRX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:text="Riscaldamento spento"
+                        android:layout_marginRight="50dp"
+                        />
+
+                    <Switch
+                        android:id="@+id/switchRiscaldamento3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        />
+
+
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/nomeRegolazione"
                     android:layout_width="wrap_content"
@@ -222,6 +250,7 @@
                     />
 
                 <LinearLayout
+                    android:id="@+id/sparisciEzitto"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -229,30 +258,30 @@
                     android:layout_marginTop="10dp">
 
 
-                <ImageView
-                    android:id="@+id/menoNP"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="30dp"
-                    android:src="@mipmap/button_meno"
-                    />
+                    <ImageView
+                        android:id="@+id/menoNP"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="30dp"
+                        android:src="@mipmap/button_meno"
+                        />
 
-                <TextView
-                    android:id="@+id/valoreP"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="20"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    />
+                    <TextView
+                        android:id="@+id/valoreP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="20"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        />
 
-                <ImageView
-                    android:id="@+id/piuNP"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="30dp"
-                    android:src="@mipmap/button_piu"/>
+                    <ImageView
+                        android:id="@+id/piuNP"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="30dp"
+                        android:src="@mipmap/button_piu"/>
 
                 </LinearLayout>
 
