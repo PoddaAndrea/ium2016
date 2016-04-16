@@ -1,8 +1,8 @@
 #Domotric 
 
-##Progetto finale corso di Interazione Uomo Macchina, a.a. 2015/2016
+Progetto finale corso di Interazione Uomo Macchina, a.a. 2015/2016
 
-##Università degli Studi di Cagliari - Corso di laurea in Informatica
+Università degli Studi di Cagliari - Corso di laurea in Informatica
 
      Domotric - HCI final project, University of Cagliari
  
